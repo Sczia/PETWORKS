@@ -23,14 +23,7 @@ use Symfony\Component\Translation\MessageCatalogue;
  */
 class IcuDatFileLoader extends IcuResFileLoader
 {
-<<<<<<< HEAD
     public function load(mixed $resource, string $locale, string $domain = 'messages'): MessageCatalogue
-=======
-    /**
-     * {@inheritdoc}
-     */
-    public function load($resource, string $locale, string $domain = 'messages')
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     {
         if (!stream_is_local($resource.'.dat')) {
             throw new InvalidResourceException(sprintf('This is not a local file "%s".', $resource));
@@ -42,7 +35,7 @@ class IcuDatFileLoader extends IcuResFileLoader
 
         try {
             $rb = new \ResourceBundle($locale, $resource);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             $rb = null;
         }
 

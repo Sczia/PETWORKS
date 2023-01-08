@@ -18,16 +18,9 @@ namespace Symfony\Component\Translation\Loader;
  */
 class PhpFileLoader extends FileLoader
 {
-    private static $cache = [];
+    private static ?array $cache = [];
 
-<<<<<<< HEAD
     protected function loadResource(string $resource): array
-=======
-    /**
-     * {@inheritdoc}
-     */
-    protected function loadResource(string $resource)
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     {
         if ([] === self::$cache && \function_exists('opcache_invalidate') && filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOL) && (!\in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) || filter_var(\ini_get('opcache.enable_cli'), \FILTER_VALIDATE_BOOL))) {
             self::$cache = null;

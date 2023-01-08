@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BackupController;
 use App\Http\Controllers\CancelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConfirmController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/settings', [LoginController::class, 'changepassform'])->name('changepass.form');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('user.login');
     Route::put('/updatepass/{id}', [LoginController::class, 'updatepass'])->name('changepass.update');
-    
+
     Route::middleware(['isActive'])->group(function () {
         Route::post('/logout', [LoginController::class, 'logout'])->name('user.logout');
         /* ADMIN */
@@ -70,7 +72,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/update/{id}', 'update')->name('update');
             Route::post('/pending/{id}',  'reply')->name('reply');
             Route::get('/pdf/{id}',  'download')->name('download');
-
         });
         /* CANCEL*/
         Route::prefix('cancel')->name('cancel.')->controller(CancelController::class)->group(function () {
@@ -84,7 +85,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('owner')->name('owner.')->controller(OwnerController::class)->group(function () {
             Route::get('/',  'index')->name('index');
             Route::get('/{id}',  'show')->name('show');
-            Route::put('/comment/{id}',  'update')->name('update');
+            Route::put('/update/{id}',  'update')->name('update');
         });
         /* CONTACTS */
         Route::prefix('contact')->name('contact.')->controller(ContactController::class)->group(function () {
@@ -103,6 +104,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         /* RECORDS */
         Route::prefix('records')->name('records.')->controller(RecordController::class)->group(function () {
             Route::get('/', [RecordController::class, 'index'])->name('index');
+            Route::put('/update{id}',  'update')->name('update');
         });
 
         Route::prefix('contact')->name('contact.')->controller(ContactController::class)->group(function () {
@@ -131,15 +133,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::put('/update{id}',  'update')->name('update');
         });
 
-          /* DAILY */
+        /* DAILY */
         Route::prefix('daily')->name('daily.')->controller(DailyController::class)->group(function () {
             Route::get('/',  'index')->name('index');
             Route::post('/store',  'store')->name('store');
             Route::put('/update{id}',  'update')->name('update');
+            Route::get('/pdf',  'download')->name('download');
         });
 
-           /* ALBUM */
-           Route::prefix('album')->name('album.')->controller(AlbumController::class)->group(function () {
+        /* ALBUM */
+        Route::prefix('album')->name('album.')->controller(AlbumController::class)->group(function () {
             Route::get('/',  'index')->name('index');
             Route::post('/store',  'store')->name('store');
             Route::post('/reply',  'reply')->name('reply');
@@ -151,6 +154,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/', 'indexAdmin')->name('index');
             Route::get('/{id}', 'showAdmin')->name('show');
             Route::delete('/delete/{id}', 'destroy')->name('destroy');
+        });
+
+        /* Backup*/
+        Route::prefix('backup')->name('backup.')->controller(BackupController::class)->group(function () {
+            Route::get('/',  'index')->name('index');
+            Route::post('/store',  'store')->name('store');
+            Route::put('/update{id}',  'update')->name('update');
+        });
+
+        /* reminder */
+        Route::prefix('reminder')->name('reminder.')->controller(ReminderController::class)->group(function () {
+            Route::get('/',  'index')->name('index');
         });
     });
 });

@@ -36,10 +36,6 @@ use function array_uintersect;
 use function in_array;
 use function is_int;
 use function is_object;
-<<<<<<< HEAD
-=======
-use function reset;
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
 use function spl_object_id;
 use function sprintf;
 use function usort;
@@ -180,11 +176,7 @@ abstract class AbstractCollection extends AbstractArray implements CollectionInt
                 /** @var mixed $bValue */
                 $bValue = $this->extractValue($b, $propertyOrMethod);
 
-<<<<<<< HEAD
                 return ($aValue <=> $bValue) * ($order === Sort::Descending ? -1 : 1);
-=======
-                return ($aValue <=> $bValue) * ($order === self::SORT_DESC ? -1 : 1);
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
             },
         );
 
@@ -391,24 +383,11 @@ abstract class AbstractCollection extends AbstractArray implements CollectionInt
      */
     private function getUniformType(CollectionInterface $collection): string
     {
-<<<<<<< HEAD
         return match ($collection->getType()) {
             'integer' => 'int',
             'boolean' => 'bool',
             'double' => 'float',
             default => $collection->getType(),
         };
-=======
-        switch ($collection->getType()) {
-            case 'integer':
-                return 'int';
-            case 'boolean':
-                return 'bool';
-            case 'double':
-                return 'float';
-            default:
-                return $collection->getType();
-        }
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     }
 }

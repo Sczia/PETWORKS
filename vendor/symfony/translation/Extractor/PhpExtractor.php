@@ -32,7 +32,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
     /**
      * Prefix for new found message.
      */
-    private $prefix = '';
+    private string $prefix = '';
 
     /**
      * The sequence that captures translation messages.
@@ -132,14 +132,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
         ],
     ];
 
-<<<<<<< HEAD
     public function extract(string|iterable $resource, MessageCatalogue $catalog)
-=======
-    /**
-     * {@inheritdoc}
-     */
-    public function extract($resource, MessageCatalogue $catalog)
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     {
         $files = $this->extractFiles($resource);
         foreach ($files as $file) {
@@ -156,12 +149,8 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
 
     /**
      * Normalizes a token.
-     *
-     * @param mixed $token
-     *
-     * @return string|null
      */
-    protected function normalizeToken($token)
+    protected function normalizeToken(mixed $token): ?string
     {
         if (isset($token[1]) && 'b"' !== $token) {
             return $token[1];
@@ -316,23 +305,14 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
     }
 
     /**
-     * @return bool
-     *
      * @throws \InvalidArgumentException
      */
-    protected function canBeExtracted(string $file)
+    protected function canBeExtracted(string $file): bool
     {
         return $this->isFile($file) && 'php' === pathinfo($file, \PATHINFO_EXTENSION);
     }
 
-<<<<<<< HEAD
     protected function extractFromDirectory(string|array $directory): iterable
-=======
-    /**
-     * {@inheritdoc}
-     */
-    protected function extractFromDirectory($directory)
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     {
         if (!class_exists(Finder::class)) {
             throw new \LogicException(sprintf('You cannot use "%s" as the "symfony/finder" package is not installed. Try running "composer require symfony/finder".', static::class));

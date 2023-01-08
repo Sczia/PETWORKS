@@ -84,4 +84,10 @@ class DailyController extends Controller
     {
         //
     }
+
+    public function download()
+    {
+        $daylies=Daily::all();
+        return view('Petworks.admin.inventory.daily.modal._pdf',compact('daylies'));
+    }
 }

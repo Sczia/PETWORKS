@@ -84,27 +84,6 @@ namespace Ramsey\Collection\Map;
  */
 class TypedMap extends AbstractTypedMap
 {
-<<<<<<< HEAD
-=======
-    use TypeTrait;
-
-    /**
-     * The data type of keys stored in this collection.
-     *
-     * A map key's type is immutable once it is set. For this reason, this
-     * property is set private.
-     */
-    private string $keyType;
-
-    /**
-     * The data type of values stored in this collection.
-     *
-     * A map value's type is immutable once it is set. For this reason, this
-     * property is set private.
-     */
-    private string $valueType;
-
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     /**
      * Constructs a map object of the specified key and value types,
      * optionally with the specified data.
@@ -113,19 +92,11 @@ class TypedMap extends AbstractTypedMap
      * @param string $valueType The data type of the map's values.
      * @param array<K, T> $data The initial data to set for this map.
      */
-<<<<<<< HEAD
     public function __construct(
         private readonly string $keyType,
         private readonly string $valueType,
         array $data = [],
     ) {
-=======
-    public function __construct(string $keyType, string $valueType, array $data = [])
-    {
-        $this->keyType = $keyType;
-        $this->valueType = $valueType;
-
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
         parent::__construct($data);
     }
 

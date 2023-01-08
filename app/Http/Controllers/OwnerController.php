@@ -21,7 +21,7 @@ class OwnerController extends Controller
                 $query->where('type', '=', 'old client');
             }
         )->orderBy('name', 'ASC')->get();
-        
+
         return view('Petworks.admin.owner.index', compact('owners'));
     }
 
@@ -87,6 +87,8 @@ class OwnerController extends Controller
     {
         try {
             $appointment = Appointment::findOrFail($id);
+            $appointment->history = $request->input('history');
+            $appointment->prescription = $request->input('prescription');
             $appointment->comment = $request->input('comment');
             $appointment->save();
             toast()->success('Success', 'You saved changes')->autoClose(3000)->animation('animate__fadeInRight', 'animate__fadeOutRight')->width('400px');

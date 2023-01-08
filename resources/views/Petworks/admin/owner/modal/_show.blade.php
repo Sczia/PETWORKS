@@ -25,11 +25,11 @@
                             <tbody>
                                 <tr>
                                     <td class="text-left font-weight-bold">Cheif Complaint:</td>
-                                    <td class="text-left">{{ $consultation->weight }}</td>
+                                    <td class="text-left">{{ $consultation->complaint}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-left font-weight-bold">Body Weight:</td>
-                                    <td class="text-left">{{ $consultation->complaint }}</td>
+                                    <td class="text-left">{{ $consultation->weight }}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-left font-weight-bold">HR:</td>
@@ -68,18 +68,6 @@
                                     <td class="text-left"> {{ $consultation->comment }}</td>
                                 </tr>
 
-                              {{--   <h6>Cheif Complaint: {{ $consultation->complaint }}</h6>
-                                <h6>Body Weight: {{ $consultation->weight }}</h6>
-                                <h6>HR: {{ $consultation->hr }}</h6>
-                                <h6>RR: {{ $consultation->rr }}</h6>
-                                <h6>Temperature: {{ $consultation->temperature }}</h6>
-                                <h6>Diet: {{ $consultation->diet }}</h6>
-                                <h6>Next Visit: {{ date('F d, Y', strtotime($consultation->next_visit)) }}</h6>
-                                <h6>Doctor: {{ $consultation->doctor->name }}</h6>
-                                <h6>Medical History: {{ $consultation->history }}</h6>
-                                <h6>Prescription: {{ $consultation->prescription }}</h6>
-                                <h6>Comment: {{ $consultation->comment }}</h6>
-                                <h6 class="card-title">Comment: {{ $consultation->comment }}</h6> --}}
 
                             </tbody>
                         </table>

@@ -14,6 +14,7 @@
 
     <meta name="author" content="Code With Mark">
     <meta name="authorUrl" content="http://codewithmark.com">
+    <link rel="icon" href="/images/petworks.png">
 
     <!--[CSS/JS Files - Start]-->
     <link rel="stylesheet" href="/css/medical.css">

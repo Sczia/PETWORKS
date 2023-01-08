@@ -108,7 +108,7 @@ class PendingController extends Controller
 
         try {
             $appointment = Appointment::where('id', '=', $id)->firstOrFail();
-            $appointment->update(['status'=>'cancelled','cancelled_by'=>'admin']);
+            $appointment->update(['status'=>'cancelled','cancelled_by'=>'Admin']);
             $data = [
                 'message' => 'Sorry, but the appointment that you booked has been canceled for the reason that the clinic gave you excess time for waiting time and you agreed to the terms and conditions.'
             ];

@@ -32,7 +32,6 @@ use function array_unshift;
 class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
 {
     /**
-<<<<<<< HEAD
      * Constructs a double-ended queue (dequeue) object of the specified type,
      * optionally with the specified data.
      *
@@ -42,36 +41,10 @@ class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
     public function __construct(private readonly string $queueType, array $data = [])
     {
         parent::__construct($this->queueType, $data);
-=======
-     * Index of the last element in the queue.
-     */
-    private int $tail = -1;
-
-    /**
-     * @inheritDoc
-     */
-    public function offsetSet($offset, $value): void
-    {
-        if ($this->checkType($this->getType(), $value) === false) {
-            throw new InvalidArgumentException(
-                'Value must be of type ' . $this->getType() . '; value is '
-                . $this->toolValueToString($value),
-            );
-        }
-
-        $this->tail++;
-
-        $this->data[$this->tail] = $value;
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     }
 
     /**
      * @throws InvalidArgumentException if $element is of the wrong type
-<<<<<<< HEAD
-=======
-     *
-     * @inheritDoc
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
      */
     public function addFirst(mixed $element): bool
     {

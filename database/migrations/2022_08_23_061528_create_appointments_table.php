@@ -39,9 +39,9 @@ class CreateAppointmentsTable extends Migration
             $table->string('temperature')->nullable();
             $table->string('diet')->nullable();
             $table->string('next_visit')->nullable();
+
             $table->string('history')->nullable();
             $table->string('prescription')->nullable();
-            /* Dito sia. */
             $table->string('comment')->nullable();
             $table->unsignedBigInteger('doctor_id')->nullable();
             $table->foreign('doctor_id')
