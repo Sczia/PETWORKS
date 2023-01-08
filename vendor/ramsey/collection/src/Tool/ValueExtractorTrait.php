@@ -17,7 +17,15 @@ namespace Ramsey\Collection\Tool;
 use Ramsey\Collection\Exception\InvalidPropertyOrMethod;
 use Ramsey\Collection\Exception\UnsupportedOperationException;
 
+<<<<<<< HEAD
 use function is_array;
+=======
+<<<<<<< HEAD
+use function is_array;
+=======
+use function get_class;
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
 use function is_object;
 use function method_exists;
 use function property_exists;
@@ -44,7 +52,16 @@ trait ValueExtractorTrait
      * @throws InvalidPropertyOrMethod
      * @throws UnsupportedOperationException
      */
+<<<<<<< HEAD
     protected function extractValue(mixed $element, ?string $propertyOrMethod): mixed
+=======
+<<<<<<< HEAD
+    protected function extractValue(mixed $element, ?string $propertyOrMethod): mixed
+=======
+    // phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+    protected function extractValue($object, string $propertyOrMethod)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     {
         if ($propertyOrMethod === null) {
             return $element;
@@ -64,6 +81,10 @@ trait ValueExtractorTrait
             ));
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
         if (property_exists($element, $propertyOrMethod)) {
             return $element->$propertyOrMethod;
         }
@@ -77,5 +98,14 @@ trait ValueExtractorTrait
             $propertyOrMethod,
             $element::class,
         ));
+<<<<<<< HEAD
+=======
+=======
+        throw new ValueExtractionException(
+            // phpcs:ignore SlevomatCodingStandard.Classes.ModernClassNameReference.ClassNameReferencedViaFunctionCall
+            sprintf('Method or property "%s" not defined in %s', $propertyOrMethod, get_class($object)),
+        );
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     }
 }

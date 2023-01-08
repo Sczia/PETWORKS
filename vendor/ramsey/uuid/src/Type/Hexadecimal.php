@@ -19,6 +19,14 @@ use ValueError;
 
 use function preg_match;
 use function sprintf;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+use function strpos;
+use function strtolower;
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
 use function substr;
 
 /**
@@ -32,14 +40,37 @@ use function substr;
  */
 final class Hexadecimal implements TypeInterface
 {
-    private string $value;
+    /**
+     * @var string
+     */
+    private $value;
 
     /**
      * @param self|string $value The hexadecimal value to store
      */
     public function __construct(self | string $value)
     {
+<<<<<<< HEAD
         $this->value = $value instanceof self ? (string) $value : $this->prepareValue($value);
+=======
+<<<<<<< HEAD
+        $this->value = $value instanceof self ? (string) $value : $this->prepareValue($value);
+=======
+        $value = strtolower($value);
+
+        if (strpos($value, '0x') === 0) {
+            $value = substr($value, 2);
+        }
+
+        if (!ctype_xdigit($value)) {
+            throw new InvalidArgumentException(
+                'Value must be a hexadecimal number'
+            );
+        }
+
+        $this->value = $value;
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     }
 
     public function toString(): string
@@ -73,17 +104,18 @@ final class Hexadecimal implements TypeInterface
     /**
      * Constructs the object from a serialized string representation
      *
-     * @param string $data The serialized string representation of the object
+     * @param string $serialized The serialized string representation of the object
      *
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      * @psalm-suppress UnusedMethodCall
      */
-    public function unserialize(string $data): void
+    public function unserialize($serialized): void
     {
-        $this->__construct($data);
+        $this->__construct($serialized);
     }
 
     /**
-     * @param array{string?: string} $data
+     * @param array{string: string} $data
      */
     public function __unserialize(array $data): void
     {

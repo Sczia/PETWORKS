@@ -18,6 +18,14 @@ use ArrayIterator;
 use Traversable;
 
 use function count;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+use function serialize;
+use function unserialize;
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
 
 /**
  * This class provides a basic implementation of `ArrayInterface`, to minimize

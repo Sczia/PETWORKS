@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace Ramsey\Uuid\Rfc4122;
 
-use Ramsey\Uuid\Uuid;
-
 /**
  * Provides common functionality for handling the version, as defined by RFC 4122
  *
@@ -29,11 +27,6 @@ trait VersionTrait
     abstract public function getVersion(): ?int;
 
     /**
-     * Returns true if these fields represent a max UUID
-     */
-    abstract public function isMax(): bool;
-
-    /**
      * Returns true if these fields represent a nil UUID
      */
     abstract public function isNil(): bool;
@@ -45,10 +38,11 @@ trait VersionTrait
      */
     private function isCorrectVersion(): bool
     {
-        if ($this->isNil() || $this->isMax()) {
+        if ($this->isNil()) {
             return true;
         }
 
+<<<<<<< HEAD
         return match ($this->getVersion()) {
             Uuid::UUID_TYPE_TIME, Uuid::UUID_TYPE_DCE_SECURITY,
             Uuid::UUID_TYPE_HASH_MD5, Uuid::UUID_TYPE_RANDOM,
@@ -56,5 +50,18 @@ trait VersionTrait
             Uuid::UUID_TYPE_UNIX_TIME, Uuid::UUID_TYPE_CUSTOM => true,
             default => false,
         };
+=======
+        switch ($this->getVersion()) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                return true;
+        }
+
+        return false;
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     }
 }

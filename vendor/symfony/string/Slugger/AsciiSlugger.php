@@ -55,8 +55,8 @@ class AsciiSlugger implements SluggerInterface, LocaleAwareInterface
         'zh' => 'Han-Latin',
     ];
 
-    private ?string $defaultLocale;
-    private \Closure|array $symbolsMap = [
+    private $defaultLocale;
+    private $symbolsMap = [
         'en' => ['@' => 'at', '&' => 'and'],
     ];
     private bool|string $emoji = false;
@@ -66,20 +66,49 @@ class AsciiSlugger implements SluggerInterface, LocaleAwareInterface
      *
      * @var \Transliterator[]
      */
-    private array $transliterators = [];
+    private $transliterators = [];
 
-    public function __construct(string $defaultLocale = null, array|\Closure $symbolsMap = null)
+    /**
+     * @param array|\Closure|null $symbolsMap
+     */
+    public function __construct(string $defaultLocale = null, $symbolsMap = null)
     {
+        if (null !== $symbolsMap && !\is_array($symbolsMap) && !$symbolsMap instanceof \Closure) {
+            throw new \TypeError(sprintf('Argument 2 passed to "%s()" must be array, Closure or null, "%s" given.', __METHOD__, \gettype($symbolsMap)));
+        }
+
         $this->defaultLocale = $defaultLocale;
         $this->symbolsMap = $symbolsMap ?? $this->symbolsMap;
     }
 
+<<<<<<< HEAD
     public function setLocale(string $locale)
+=======
+<<<<<<< HEAD
+    public function setLocale(string $locale)
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocale($locale)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     {
         $this->defaultLocale = $locale;
     }
 
+<<<<<<< HEAD
     public function getLocale(): string
+=======
+<<<<<<< HEAD
+    public function getLocale(): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocale()
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     {
         return $this->defaultLocale;
     }
@@ -103,10 +132,10 @@ class AsciiSlugger implements SluggerInterface, LocaleAwareInterface
 
     public function slug(string $string, string $separator = '-', string $locale = null): AbstractUnicodeString
     {
-        $locale ??= $this->defaultLocale;
+        $locale = $locale ?? $this->defaultLocale;
 
         $transliterator = [];
-        if ($locale && ('de' === $locale || str_starts_with($locale, 'de_'))) {
+        if ($locale && ('de' === $locale || 0 === strpos($locale, 'de_'))) {
             // Use the shortcut for German in UnicodeString::ascii() if possible (faster and no requirement on intl)
             $transliterator = ['de-ASCII'];
         } elseif (\function_exists('transliterator_transliterate') && $locale) {

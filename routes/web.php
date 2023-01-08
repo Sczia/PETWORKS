@@ -47,7 +47,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/settings', [LoginController::class, 'changepassform'])->name('changepass.form');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('user.login');
     Route::put('/updatepass/{id}', [LoginController::class, 'updatepass'])->name('changepass.update');
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     Route::middleware(['isActive'])->group(function () {
         Route::post('/logout', [LoginController::class, 'logout'])->name('user.logout');
         /* ADMIN */

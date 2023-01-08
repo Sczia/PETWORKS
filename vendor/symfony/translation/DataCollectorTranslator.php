@@ -25,8 +25,8 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
     public const MESSAGE_MISSING = 1;
     public const MESSAGE_EQUALS_FALLBACK = 2;
 
-    private TranslatorInterface $translator;
-    private array $messages = [];
+    private $translator;
+    private $messages = [];
 
     /**
      * @param TranslatorInterface&TranslatorBagInterface&LocaleAwareInterface $translator
@@ -40,7 +40,18 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
         $this->translator = $translator;
     }
 
+<<<<<<< HEAD
     public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null): string
+=======
+<<<<<<< HEAD
+    public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     {
         $trans = $this->translator->trans($id = (string) $id, $parameters, $domain, $locale);
         $this->collectMessage($locale, $domain, $id, $trans, $parameters);
@@ -53,12 +64,34 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
         $this->translator->setLocale($locale);
     }
 
+<<<<<<< HEAD
     public function getLocale(): string
+=======
+<<<<<<< HEAD
+    public function getLocale(): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocale()
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     {
         return $this->translator->getLocale();
     }
 
+<<<<<<< HEAD
     public function getCatalogue(string $locale = null): MessageCatalogueInterface
+=======
+<<<<<<< HEAD
+    public function getCatalogue(string $locale = null): MessageCatalogueInterface
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getCatalogue(string $locale = null)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     {
         return $this->translator->getCatalogue($locale);
     }
@@ -71,7 +104,7 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
     /**
      * @return string[]
      */
-    public function warmUp(string $cacheDir): array
+    public function warmUp(string $cacheDir)
     {
         if ($this->translator instanceof WarmableInterface) {
             return (array) $this->translator->warmUp($cacheDir);
@@ -82,8 +115,10 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
 
     /**
      * Gets the fallback locales.
+     *
+     * @return array
      */
-    public function getFallbackLocales(): array
+    public function getFallbackLocales()
     {
         if ($this->translator instanceof Translator || method_exists($this->translator, 'getFallbackLocales')) {
             return $this->translator->getFallbackLocales();
@@ -100,7 +135,10 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
         return $this->translator->{$method}(...$args);
     }
 
-    public function getCollectedMessages(): array
+    /**
+     * @return array
+     */
+    public function getCollectedMessages()
     {
         return $this->messages;
     }

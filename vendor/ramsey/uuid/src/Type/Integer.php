@@ -21,6 +21,13 @@ use function assert;
 use function is_numeric;
 use function preg_match;
 use function sprintf;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+use function strpos;
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
 use function substr;
 
 /**
@@ -40,13 +47,60 @@ final class Integer implements NumberInterface
     /**
      * @psalm-var numeric-string
      */
-    private string $value;
+    private $value;
 
-    private bool $isNegative = false;
+    /**
+     * @var bool
+     */
+    private $isNegative = false;
 
-    public function __construct(float | int | string | self $value)
+    /**
+     * @param mixed $value The integer value to store
+     */
+    public function __construct($value)
     {
+<<<<<<< HEAD
         $this->value = $value instanceof self ? (string) $value : $this->prepareValue($value);
+=======
+<<<<<<< HEAD
+        $this->value = $value instanceof self ? (string) $value : $this->prepareValue($value);
+=======
+        $value = (string) $value;
+        $sign = '+';
+
+        // If the value contains a sign, remove it for ctype_digit() check.
+        if (strpos($value, '-') === 0 || strpos($value, '+') === 0) {
+            $sign = substr($value, 0, 1);
+            $value = substr($value, 1);
+        }
+
+        if (!ctype_digit($value)) {
+            throw new InvalidArgumentException(
+                'Value must be a signed integer or a string containing only '
+                . 'digits 0-9 and, optionally, a sign (+ or -)'
+            );
+        }
+
+        // Trim any leading zeros.
+        $value = ltrim($value, '0');
+
+        // Set to zero if the string is empty after trimming zeros.
+        if ($value === '') {
+            $value = '0';
+        }
+
+        // Add the negative sign back to the value.
+        if ($sign === '-' && $value !== '0') {
+            $value = $sign . $value;
+            $this->isNegative = true;
+        }
+
+        /** @psalm-var numeric-string $numericValue */
+        $numericValue = $value;
+
+        $this->value = $numericValue;
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     }
 
     public function isNegative(): bool
@@ -91,17 +145,18 @@ final class Integer implements NumberInterface
     /**
      * Constructs the object from a serialized string representation
      *
-     * @param string $data The serialized string representation of the object
+     * @param string $serialized The serialized string representation of the object
      *
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      * @psalm-suppress UnusedMethodCall
      */
-    public function unserialize(string $data): void
+    public function unserialize($serialized): void
     {
-        $this->__construct($data);
+        $this->__construct($serialized);
     }
 
     /**
-     * @param array{string?: string} $data
+     * @param array{string: string} $data
      */
     public function __unserialize(array $data): void
     {

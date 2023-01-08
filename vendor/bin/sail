@@ -1,6 +1,14 @@
 #!/usr/bin/env sh
 
+<<<<<<< HEAD
 dir=$(cd "${0%[/\\]*}" > /dev/null; cd ../laravel/sail/bin && pwd)
+=======
+<<<<<<< HEAD
+dir=$(cd "${0%[/\\]*}" > /dev/null; cd ../laravel/sail/bin && pwd)
+=======
+dir=$(cd "${0%[/\\]*}" > /dev/null; cd "../laravel/sail/bin" && pwd)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
 
 if [ -d /proc/cygdrive ]; then
     case $(which php) in

@@ -165,17 +165,30 @@
                             <td>{{ $product->product->price }}</td>
                             <td>
                                 <div class="d-flex">
+<<<<<<< HEAD
                                    <div class="row">
                                             <div class="col">
                                                 <button class="btn btn-sm btn-success px-2 my-0" wire:click='increase({{ $product->product_id }})'><i class="fa fa-plus " aria-hidden="true"></i></button>
                                             </div>
                                             <div class="col border">
                                                 <span>{{ $product->quantity }}</span>
+=======
+                                   <div class="row">          
+                                            <div class="col">
+                                                <button class="btn btn-sm btn-success px-2 my-0" wire:click='increase({{ $product->product_id }})'><i class="fa fa-plus " aria-hidden="true"></i></button>   
+                                            </div>
+                                            <div class="col border">
+                                                <span>{{ $product->quantity }}</span>    
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
                                             </div>
                                             <div class="col">
                                                 <button class="btn btn-sm btn-danger px-2 my-0" wire:click='decrease({{ $product->product_id }})'><i class="fa fa-minus" aria-hidden="true"></i></button>
                                             </div>
+<<<<<<< HEAD
                                    </div>
+=======
+                                   </div>      
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
                                 </div>
                             </td>
                         </tr>

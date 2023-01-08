@@ -21,7 +21,8 @@ class Gallery extends Component
             'photos.*' => 'image|mimes:png,jpg|max:5024', // 1MB Max
         ]);
         $title = Str::replace(' ', '-', Str::lower($this->title));
-        $path = 'uploads/gallery/' . $title;
+        $folder = 'gallery/uploads/';
+        $path = 'public/'.$folder. $title;
         $photo = $this->photos[0];
         $filename = $title . '-.' . $photo->getClientOriginalExtension();
         $photo->storeAs($path, $filename);
@@ -45,7 +46,11 @@ class Gallery extends Component
                 ModelsPhotos::create([
                     'album_id' => $gallery_id,
                     'photo' => Str::lower($this->title . '-' . $key),
+<<<<<<< HEAD
                     'path' => $path.'/'. $filename,
+=======
+                    'path' => $folder .$title.'/'. $filename,
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
                 ]);
                 // Save the photo to the given path
                 $photo->storeAs($path, $filename);

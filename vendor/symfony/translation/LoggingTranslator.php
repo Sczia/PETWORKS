@@ -21,8 +21,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, LocaleAwareInterface
 {
-    private TranslatorInterface $translator;
-    private LoggerInterface $logger;
+    private $translator;
+    private $logger;
 
     /**
      * @param TranslatorInterface&TranslatorBagInterface&LocaleAwareInterface $translator The translator must implement TranslatorBagInterface
@@ -37,7 +37,18 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, 
         $this->logger = $logger;
     }
 
+<<<<<<< HEAD
     public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null): string
+=======
+<<<<<<< HEAD
+    public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     {
         $trans = $this->translator->trans($id = (string) $id, $parameters, $domain, $locale);
         $this->log($id, $domain, $locale);
@@ -56,12 +67,34 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, 
         $this->logger->debug(sprintf('The locale of the translator has changed from "%s" to "%s".', $prev, $locale));
     }
 
+<<<<<<< HEAD
     public function getLocale(): string
+=======
+<<<<<<< HEAD
+    public function getLocale(): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocale()
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     {
         return $this->translator->getLocale();
     }
 
+<<<<<<< HEAD
     public function getCatalogue(string $locale = null): MessageCatalogueInterface
+=======
+<<<<<<< HEAD
+    public function getCatalogue(string $locale = null): MessageCatalogueInterface
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getCatalogue(string $locale = null)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
     {
         return $this->translator->getCatalogue($locale);
     }
@@ -73,8 +106,10 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, 
 
     /**
      * Gets the fallback locales.
+     *
+     * @return array
      */
-    public function getFallbackLocales(): array
+    public function getFallbackLocales()
     {
         if ($this->translator instanceof Translator || method_exists($this->translator, 'getFallbackLocales')) {
             return $this->translator->getFallbackLocales();

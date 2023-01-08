@@ -1,5 +1,6 @@
 @extends('Petworks.admin.layouts.index')
 @section('sidebar')
+<<<<<<< HEAD
     <style>
         .nav-link.active {
             background-color: #7ba0c5 !important;
@@ -8,6 +9,19 @@
 
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 z-index-2 "
         id="sidenav-main" style="background-color:#FFFFFF;">
+=======
+
+<style>
+.nav-link.active{
+    background-color: #7ba0c5 !important;
+}
+     
+</style>
+
+    <aside
+        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 z-index-2 "
+        id="sidenav-main"  style="background-color:#FFFFFF;">
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
@@ -75,7 +89,11 @@
                     </li>
                 @endif
 
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
                 @if (Auth::guard('admin')->user()->roles == 'Admin' || Auth::guard('admin')->user()->roles == 'Owner')
                     {{-- Appointment --}}
                     <li class="nav-item">
@@ -237,6 +255,7 @@
                     </li>
                 @endif
 
+<<<<<<< HEAD
                 {{-- EMAIL AND PASSWORD --}}
 
                 <hr class="horizontal dark mt-1">
@@ -266,7 +285,20 @@
 
                     </a>
                 </li>
+=======
+                <hr class="horizontal dark mt-1">
+                    <li class="nav-item mt-3">
+                        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">SETTINGS</h6>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link me-2 {{ Request::routeIs('admin.changepass.form') ? 'active' : '' }}" href="{{ route('admin.changepass.form') }}">
+                            <i class="fa-solid fa-user text-sm opacity-10 {{ Request::routeIs('admin.changepass.form') ? '' : 'text-info' }}"></i>Change Password
+                        </a>
+                    </li>
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
             </ul>
         </div>
     </aside>
+
 @endsection

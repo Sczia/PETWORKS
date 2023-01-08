@@ -14,8 +14,23 @@ declare(strict_types=1);
 
 namespace Ramsey\Collection\Exception;
 
+<<<<<<< HEAD
 use Throwable;
 
 interface CollectionException extends Throwable
+=======
+<<<<<<< HEAD:vendor/ramsey/collection/src/Exception/CollectionException.php
+use Throwable;
+
+interface CollectionException extends Throwable
+=======
+use RuntimeException;
+
+/**
+ * Thrown when attempting to use a sort order that is not recognized.
+ */
+class InvalidSortOrderException extends RuntimeException
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45:vendor/ramsey/collection/src/Exception/InvalidSortOrderException.php
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
 {
 }
