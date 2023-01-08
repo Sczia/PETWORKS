@@ -406,7 +406,7 @@
             <a href="https://twitter.com/petworksclinic" class="fab fa-twitter"></a>
             {{-- <a href="#" class="fab fa-github"></a> --}}
         </div>
-        <p class="credit"> created by <span>BSIT 3-1</span> | all rights reserved 2022 </p>
+        <p class="credit"> created by <span>BSIT 4-1 PUP Calauan Campus</span> | all rights reserved 2023 </p>
 
     </section>
     <!-- footer section ends -->

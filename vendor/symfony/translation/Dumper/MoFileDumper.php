@@ -21,10 +21,14 @@ use Symfony\Component\Translation\MessageCatalogue;
  */
 class MoFileDumper extends FileDumper
 {
+<<<<<<< HEAD
+    public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = []): string
+=======
     /**
      * {@inheritdoc}
      */
-    public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = []): string
+    public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = [])
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     {
         $sources = $targets = $sourceOffsets = $targetOffsets = '';
         $offsets = [];
@@ -57,7 +61,7 @@ class MoFileDumper extends FileDumper
                           .$this->writeLong($offset[2] + $sourcesStart + $sourcesSize);
         }
 
-        $output = implode('', array_map($this->writeLong(...), $header))
+        $output = implode('', array_map([$this, 'writeLong'], $header))
                .$sourceOffsets
                .$targetOffsets
                .$sources
@@ -67,15 +71,19 @@ class MoFileDumper extends FileDumper
         return $output;
     }
 
+<<<<<<< HEAD
+    protected function getExtension(): string
+=======
     /**
      * {@inheritdoc}
      */
-    protected function getExtension(): string
+    protected function getExtension()
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     {
         return 'mo';
     }
 
-    private function writeLong(mixed $str): string
+    private function writeLong($str): string
     {
         return pack('V*', $str);
     }

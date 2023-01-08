@@ -52,7 +52,7 @@
 
 
                             <tbody>
-                                @foreach ($appointments as $appointment)
+                                @forelse ($appointments as $appointment)
                                     <tr>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center px-2 py-1">
@@ -99,7 +99,12 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
+
+                                    @empty
+                                    <tr>
+                                        <td class="text-center" colspan="8">No Requests</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

@@ -1,3 +1,4 @@
+
 <div class="card-body">
     <div class="row">
         <div class="col border-end">
@@ -163,13 +164,19 @@
                             <td>{{ $product->product->product_name }}</td>
                             <td>{{ $product->product->price }}</td>
                             <td>
-                                <div class="d-flex flex-column align-items-center w-25">
-                                    <button class="btn btn-sm btn-primary px-2 my-0" wire:click='increase({{ $product->product_id }})'><i class="fa fa-arrow-up " aria-hidden="true"></i></button>
-                                    <span class="bordered"> {{ $product->quantity }}</span>
-                                    <button class="btn btn-sm btn-primary px-2 my-0" wire:click='decrease({{ $product->product_id }})'><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+                                <div class="d-flex">
+                                   <div class="row">          
+                                            <div class="col">
+                                                <button class="btn btn-sm btn-success px-2 my-0" wire:click='increase({{ $product->product_id }})'><i class="fa fa-plus " aria-hidden="true"></i></button>   
+                                            </div>
+                                            <div class="col border">
+                                                <span>{{ $product->quantity }}</span>    
+                                            </div>
+                                            <div class="col">
+                                                <button class="btn btn-sm btn-danger px-2 my-0" wire:click='decrease({{ $product->product_id }})'><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                            </div>
+                                   </div>      
                                 </div>
-
-
                             </td>
                         </tr>
                     @endforeach

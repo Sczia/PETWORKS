@@ -42,7 +42,7 @@
 
 
                             <tbody>
-                                @foreach ($appointments as $appointment)
+                                @forelse ($appointments as $appointment)
                                     <tr>
                                         <td>
                                             <h6 class="mb-0 text-sm">{{ $appointment->owner->name }}</h6>
@@ -72,7 +72,12 @@
                                         </td>
 
                                     </tr>
-                                @endforeach
+
+                                    @empty
+                                    <tr>
+                                        <td class="text-center" colspan="8">No Records</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

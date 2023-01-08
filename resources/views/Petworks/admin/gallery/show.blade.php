@@ -29,7 +29,7 @@
                     @foreach ($gallery->photos as $photo)
                         <div class="col-sm-5 col-md-5 col-lg-4">
                             <div class="card shadow-sm">
-                                <img class="rounded-3 card-img-200" style="height: 300px;" src="{{ asset($photo->path) }}"
+                                <img class="rounded-3 card-img-200" style="height: 300px;" src="{{ url('/storage/'.$photo->path) }}"
                                     alt="{{ $photo->photo }}">
                             </div>
                         </div>

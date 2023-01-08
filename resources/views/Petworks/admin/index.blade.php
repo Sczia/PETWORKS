@@ -1,11 +1,16 @@
 @extends('Petworks.admin.layouts.index')
-@section('tab-title')
-    Dashboard
-@endsection
 @section('sidebar')
+
+<style>
+.nav-link.active{
+    background-color: #7ba0c5 !important;
+}
+     
+</style>
+
     <aside
-        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 z-index-2"
-        id="sidenav-main">
+        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 z-index-2 "
+        id="sidenav-main"  style="background-color:#FFFFFF;">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
@@ -17,7 +22,7 @@
         <hr class="horizontal dark mt-0">
 
         {{-- dashboard --}}
-        <div class="navbar-collapse  w-auto " id="sidenav-collapse-main">
+        <div class="navbar-collapse w-auto" id="sidenav-collapse-main">
             <ul class="navbar-nav">
 
                 <li class="nav-item mt-2">
@@ -70,6 +75,8 @@
                         </a>
                     </li>
                 @endif
+
+                
                 @if (Auth::guard('admin')->user()->roles == 'Admin' || Auth::guard('admin')->user()->roles == 'Owner')
                     {{-- Appointment --}}
                     <li class="nav-item">
@@ -83,7 +90,7 @@
                             </div>
                             <span class="nav-link-text">Appointment</span>
                         </a>
-                        <div class="collapse mt-1 bg-primary rounded mx-2" id="appointment">
+                        <div class="collapse mt-1 rounded mx-2" id="appointment" style="background-color:#7ba0c5;">
                             <ul class="nav nav-sm flex-column p-2">
                                 <li
                                     class="nav-item  mb-1 {{ Request::routeIs('admin.appointment.index') ? 'nav-item-active' : '' }}">
@@ -224,11 +231,18 @@
                 @endif
                 {{-- Homepage dropdown --}}
 
-
-
-
+                <hr class="horizontal dark mt-1">
+                    <li class="nav-item mt-3">
+                        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">SETTINGS</h6>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link me-2 {{ Request::routeIs('admin.changepass.form') ? 'active' : '' }}" href="{{ route('admin.changepass.form') }}">
+                            <i class="fa-solid fa-user text-sm opacity-10 {{ Request::routeIs('admin.changepass.form') ? '' : 'text-info' }}"></i>Change Password
+                        </a>
+                    </li>
             </ul>
         </div>
-
     </aside>
+
 @endsection

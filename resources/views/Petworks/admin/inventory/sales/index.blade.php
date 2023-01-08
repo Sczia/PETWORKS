@@ -64,7 +64,7 @@ Sales
 
 
                         <tbody>
-                            @foreach ($sales as $sale)
+                            @forelse ($sales as $sale)
                             <tr>
                                 <td>
                                     <div class="d-flex flex-column justify-content-center px-2 py-1">
@@ -120,16 +120,12 @@ Sales
                                         <h6 class="mb-0 text-sm">₱{{ number_format($sale->sale, 2, '.', ',') }}</h6>
                                     </div>
                                 </td>
-
-
-
-
-
-
-
-
                             </tr>
-                            @endforeach
+                            @empty
+                                    <tr>
+                                        <td class="text-center" colspan="8">No Records</td>
+                                    </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

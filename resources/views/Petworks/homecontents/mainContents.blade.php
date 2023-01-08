@@ -18,10 +18,21 @@
 <body>
     @include('Petworks.homecontents.layouts.navbar')
     @yield('contents')
-@if (Request::routeIs('home.index'))
+    @if (Request::routeIs('home.index'))
+        <script src="/js/script.js"></script>
+    @endif
 
-<script src="/js/script.js"></script>
-@endif
+    @if (Request::routeIs('gallery.*'))
+        <script>
+            let menu = document.querySelector('#menu-btn');
+            let navbar = document.querySelector('.header .nav');
+
+            menu.onclick = () => {
+                menu.classList.toggle('fa-times');
+                navbar.classList.toggle('active');
+            }
+        </script>
+    @endif
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     @yield('page-level-js')

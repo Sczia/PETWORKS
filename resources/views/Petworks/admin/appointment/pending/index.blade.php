@@ -53,7 +53,7 @@ List of Pending Appointments
 
 
                         <tbody>
-                            @foreach ($pendings as $pending)
+                            @forelse ($pendings as $pending)
                             <tr>
                                 <td>
                                     <div class="d-flex flex-column justify-content-center px-2 py-1">
@@ -104,7 +104,12 @@ List of Pending Appointments
                                     @include('Petworks.admin.appointment.pending.modal._confirm')
                                 </td>
                             </tr>
-                            @endforeach
+
+                            @empty
+                                    <tr>
+                                        <td class="text-center" colspan="8">No Records</td>
+                                    </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

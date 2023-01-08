@@ -22,7 +22,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($owners as $owner)
+                                @forelse ($owners as $owner)
                                     <tr>
                                         <td>
                                             <div class="d-flex flex-column px-2 py-1">
@@ -55,7 +55,11 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
+                                    @empty
+                                    <tr>
+                                        <td class="text-center" colspan="8">No Records</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

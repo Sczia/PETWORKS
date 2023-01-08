@@ -17,11 +17,16 @@
     <script src="/assets/argon-dashboard/assets/js/fontawesome.js"></script>
     <!-- CSS Files -->
     <link id="pagestyle" href="/assets/argon-dashboard/assets/css/argon-dashboard.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
     @livewireStyles
 </head>
 
-<body class="g-sidenav-show   bg-gray-100">
-    <div class="min-height-300 bg-primary position-absolute w-100"></div>
+<body class="g-sidenav-show  bg-gray-100">
+    <div class="min-height-300 position-absolute w-100" style="background-color:#7ba0c5;"></div>
     @yield('sidebar')
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
@@ -33,10 +38,7 @@
         </div>
     </main>
 
-    <div class="fixed-plugin">
-        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-            <i class="fa fa-cog py-2"> </i>
-        </a>
+    <div class="fixed-plugin">       
         <div class="card shadow-lg">
             <div class="card-header pb-0 pt-3 ">
                 <div class="float-start">
@@ -241,6 +243,16 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
+
+<script>
+$(document).ready(function(){
+$('#iconNavbarSidenav').click(function(e) {
+  e.preventDefault();
+       $('#sidenav-main').toggle('fast');
+ });
+
+});
+</script>
 
     <!-- Github buttons -->
     {{-- <script async defer src="https://buttons.github.io/buttons.js"></script> --}}

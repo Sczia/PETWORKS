@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Owner;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,9 +16,24 @@ class AdminController extends Controller
     public function index()
     {
 /*         $pendingCount = Appointment::where('pending', '=', 1)->count(); */
-        $confirmCount = Appointment::where('status', '=', 1)->count();
-        $recordCount = Appointment::count();
-        return view('Petworks.admin.dashboard.index', compact('recordCount', 'confirmCount'/* , 'pendingCount' */));
+        $pendingCount = Appointment::where('status', '=', 'pending')->count(); 
+        $confirmCount = Appointment::where('status', '=', 'confirmed')->count();
+        $requestCount = Appointment::where('status', '=', 'request')->count();
+        $cancelledCount = Appointment::where('status', '=', 'cancelled')->count();
+        //$recordCount = Appointment::count();
+        $recordCount = Owner::whereHas('appointments',
+        function ($query) {
+            $query->where('type', '=', 'old client');
+            }
+        )->count();
+
+        $owners = Owner::whereHas('appointments',
+            function ($query) {
+                $query->where('type', '=', 'old client');
+            }
+        )->orderBy('name', 'ASC')->take(5)->get();
+
+        return view('Petworks.admin.dashboard.index', compact('recordCount', 'confirmCount', 'pendingCount', 'cancelledCount', 'requestCount', 'owners'));
     }
 
     /**

@@ -42,7 +42,10 @@ Route::name('gallery.')->prefix('gallery')->controller(GalleryController::class)
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login/form', [HomeController::class, 'form'])->name('user.login.form');
+    Route::get('/settings', [LoginController::class, 'changepassform'])->name('changepass.form');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('user.login');
+    Route::put('/updatepass/{id}', [LoginController::class, 'updatepass'])->name('changepass.update');
+    
     Route::middleware(['isActive'])->group(function () {
         Route::post('/logout', [LoginController::class, 'logout'])->name('user.logout');
         /* ADMIN */
@@ -76,6 +79,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/update/{id}', 'update')->name('update');
             Route::post('/pending/{id}',  'reply')->name('reply');
         });
+
         /* OWNER */
         Route::prefix('owner')->name('owner.')->controller(OwnerController::class)->group(function () {
             Route::get('/',  'index')->name('index');

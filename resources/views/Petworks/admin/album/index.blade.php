@@ -1,6 +1,6 @@
 @extends('Petworks.admin.index')
-@section('page-title')
-   Album
+@section('tab-title')
+    Albums
 @endsection
 @section('contents')
     <div class="row">

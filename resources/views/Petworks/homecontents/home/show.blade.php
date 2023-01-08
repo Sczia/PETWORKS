@@ -10,7 +10,7 @@
     <li class="breadcrumb-item" aria-current="page">{{ $gallery->title }}</li>
 @endsection --}}
 @section('contents')
-    <section class="py-3 c-mt-nv" style="margin-top: 500px;">
+    <section class="py-3 c-mt-nv" style="margin-top: 100px;">
         <div class="container mb-5">
             @include('Petworks.homecontents.layouts.page-titles')
             <div class="card" data-aos="fade-up" data-aos-offset="0" data-aos-delay="50" data-aos-duration="1000"

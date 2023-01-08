@@ -14,13 +14,11 @@ declare(strict_types=1);
 
 namespace Ramsey\Collection\Map;
 
-use Ramsey\Collection\Tool\TypeTrait;
-
 /**
  * A `TypedMap` represents a map of elements where key and value are typed.
  *
  * Each element is identified by a key with defined type and a value of defined
- * type. The keys of the map must be unique. The values on the map can be=
+ * type. The keys of the map must be unique. The values on the map can be
  * repeated but each with its own different key.
  *
  * The most common case is to use a string type key, but it's not limited to
@@ -80,12 +78,14 @@ use Ramsey\Collection\Tool\TypeTrait;
  * }
  * ```
  *
- * @template K
+ * @template K of array-key
  * @template T
  * @extends AbstractTypedMap<K, T>
  */
 class TypedMap extends AbstractTypedMap
 {
+<<<<<<< HEAD
+=======
     use TypeTrait;
 
     /**
@@ -93,21 +93,18 @@ class TypedMap extends AbstractTypedMap
      *
      * A map key's type is immutable once it is set. For this reason, this
      * property is set private.
-     *
-     * @var string data type of the map key.
      */
-    private $keyType;
+    private string $keyType;
 
     /**
      * The data type of values stored in this collection.
      *
      * A map value's type is immutable once it is set. For this reason, this
      * property is set private.
-     *
-     * @var string data type of the map value.
      */
-    private $valueType;
+    private string $valueType;
 
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     /**
      * Constructs a map object of the specified key and value types,
      * optionally with the specified data.
@@ -116,12 +113,19 @@ class TypedMap extends AbstractTypedMap
      * @param string $valueType The data type of the map's values.
      * @param array<K, T> $data The initial data to set for this map.
      */
+<<<<<<< HEAD
+    public function __construct(
+        private readonly string $keyType,
+        private readonly string $valueType,
+        array $data = [],
+    ) {
+=======
     public function __construct(string $keyType, string $valueType, array $data = [])
     {
         $this->keyType = $keyType;
         $this->valueType = $valueType;
 
-        /** @psalm-suppress MixedArgumentTypeCoercion */
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
         parent::__construct($data);
     }
 

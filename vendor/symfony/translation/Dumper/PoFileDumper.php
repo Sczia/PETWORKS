@@ -20,10 +20,14 @@ use Symfony\Component\Translation\MessageCatalogue;
  */
 class PoFileDumper extends FileDumper
 {
+<<<<<<< HEAD
+    public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = []): string
+=======
     /**
      * {@inheritdoc}
      */
-    public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = []): string
+    public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = [])
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     {
         $output = 'msgid ""'."\n";
         $output .= 'msgstr ""'."\n";
@@ -111,10 +115,14 @@ EOF;
         return $standardRules;
     }
 
+<<<<<<< HEAD
+    protected function getExtension(): string
+=======
     /**
      * {@inheritdoc}
      */
-    protected function getExtension(): string
+    protected function getExtension()
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     {
         return 'po';
     }
@@ -124,7 +132,7 @@ EOF;
         return addcslashes($str, "\0..\37\42\134");
     }
 
-    private function formatComments(string|array $comments, string $prefix = ''): ?string
+    private function formatComments($comments, string $prefix = ''): ?string
     {
         $output = null;
 
