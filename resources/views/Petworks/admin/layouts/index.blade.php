@@ -15,6 +15,9 @@
     <link href="/assets/font awesome/css/all.min.css" rel="stylesheet" />
     <link href="/assets/argon-dashboard/assets/css/nucleo-svg.css" rel="stylesheet" />
     <script src="/assets/argon-dashboard/assets/js/fontawesome.js"></script>
+    <link href="/assets\DataTables-1.12.1\css\dataTables.bootstrap.min.css">
+    <script src="/assets\DataTables-1.12.1\js\dataTables.bootstrap.min.js"></script>
+
     <!-- CSS Files -->
     <link id="pagestyle" href="/assets/argon-dashboard/assets/css/argon-dashboard.css" rel="stylesheet" />
 
@@ -22,8 +25,38 @@
 
     <!-- bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.13.1/datatables.min.css"/>
+
+
+
+
     @livewireStyles
 </head>
+
+<style>
+    /* Designing for scroll-bar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: gainsboro;
+        border-radius: 5px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #7ba0c5;
+
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #608fbd;
+    }
+</style>
 
 <body class="g-sidenav-show  bg-gray-100">
     <div class="min-height-300 position-absolute w-100" style="background-color:#7ba0c5;"></div>
@@ -38,7 +71,7 @@
         </div>
     </main>
 
-    <div class="fixed-plugin">       
+    <div class="fixed-plugin">
         <div class="card shadow-lg">
             <div class="card-header pb-0 pt-3 ">
                 <div class="float-start">
@@ -150,6 +183,7 @@
     <script src="/assets/argon-dashboard/assets/js/core/bootstrap.min.js"></script>
     <script src="/assets/argon-dashboard/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="/assets/argon-dashboard/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="/assets\jQuery-3.6.0\jquery-3.6.0.min.js"></script>
     {{-- <script src="/assets/argon-dashboard/assets/js/plugins/chartjs.min.js') }}"></script> --}}
     {{-- <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
@@ -244,21 +278,22 @@
         }
     </script>
 
-<script>
-$(document).ready(function(){
-$('#iconNavbarSidenav').click(function(e) {
-  e.preventDefault();
-       $('#sidenav-main').toggle('fast');
- });
+    <script>
+        $(document).ready(function() {
+            $('#iconNavbarSidenav').click(function(e) {
+                e.preventDefault();
+                $('#sidenav-main').toggle('fast');
+            });
 
-});
-</script>
+        });
+    </script>
 
     <!-- Github buttons -->
     {{-- <script async defer src="https://buttons.github.io/buttons.js"></script> --}}
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="/assets/argon-dashboard/assets/js/argon-dashboard.min.js') }}"></script>
 
+    <script src="/assets/argon-dashboard/assets/js/argon-dashboard.min.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.js"></script>
     @yield('js')
     @stack('scripts')
     @livewireScripts

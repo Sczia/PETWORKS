@@ -74,9 +74,12 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Doctor
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Information
-                                </th>
+                                <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7">
+                                    More
+                                 </th>
+                                 <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7">
+                                     Action
+                                 </th>
 
 
                             </tr>
@@ -106,7 +109,7 @@
                                         @include('Petworks.admin.owner.modal._show')
                                     </div>
                                 </td>
-                              {{--   <td>
+                               <td>
                                     <div>
                                         <button type="button" class="btn btn-link btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#edit{{ $consultation->id }}">
@@ -116,7 +119,7 @@
                                         </button>
                                         @include('Petworks.admin.owner.modal._edit')
                                     </div>
-                                </td> --}}
+                                </td>
 
                             </tr>
                             @empty

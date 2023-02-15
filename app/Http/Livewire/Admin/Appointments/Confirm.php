@@ -8,6 +8,7 @@ use App\Models\Daily;
 use App\Models\Doctor;
 use App\Models\Photos;
 use App\Models\product;
+use App\Models\sale;
 use App\Models\SoldProduct;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
@@ -156,6 +157,7 @@ class Confirm extends Component
             'status' => 'done',
             'type' => 'old client'
 
+
         ]);
         $transaction = Daily::create([
             'appointment_id' => $this->appointment_id,
@@ -181,6 +183,16 @@ class Confirm extends Component
                 ]);
                 // Save the photo to the given path
                 $photo->storeAs($path, $filename);
+            }
+            $sold_products = SoldProduct::where('appointment_id','=',$this->appointment_id)->get();
+
+            foreach ($sold_products as $product) {
+                $sale = Sale::firstOrNew(['product_id' => $product->product_id]);
+                $remain = $sale->remain ? $sale->remain : $product->product->stock;
+                $sale->sold = $product->quantity;
+                $sale->remain = $remain - $product->quantity;
+                $sale->sale = $sale->sale + ($product->quantity * $product->product->price);
+                $sale->save();
             }
             return redirect(route('admin.owner.index'));
         } catch (\Throwable $th) {

@@ -16,12 +16,13 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        $owners = Owner::whereHas('appointments',
+        $owners = Owner::whereHas(
+            'appointments',
             function ($query) {
                 $query->where('type', '=', 'old client');
             }
         )->orderBy('name', 'ASC')->get();
-        
+
         return view('Petworks.admin.owner.index', compact('owners'));
     }
 
@@ -87,12 +88,18 @@ class OwnerController extends Controller
     {
         try {
             $appointment = Appointment::findOrFail($id);
+            $appointment->history = $request->input('history');
+            $appointment->prescription = $request->input('prescription');
             $appointment->comment = $request->input('comment');
             $appointment->save();
-            toast()->success('Success', 'You saved changes')->autoClose(3000)->animation('animate__fadeInRight', 'animate__fadeOutRight')->width('400px');
-            return back();
+            if ($appointment->wasChanged()) {
+                toast()->success('Success', 'You saved changes')->autoClose(3000)->animation('animate__fadeInRight', 'animate__fadeOutRight')->width('400px');
+                return redirect()->back();
+            }
+            toast()->info('Info', 'There is no changes')->autoClose(3000)->animation('animate__fadeInRight', 'animate__fadeOutRight')->width('400px');
+            return redirect()->back();
         } catch (\Throwable $th) {
-            toast()->info('Info', 'You did not any save changes')->autoClose(3000)->animation('animate__fadeInRight', 'animate__fadeOutRight')->width('400px'); /* sweet alert dito */
+            toast()->info('Info', 'You did not save any changes')->autoClose(3000)->animation('animate__fadeInRight', 'animate__fadeOutRight')->width('400px'); /* sweet alert dito */
         }
     }
 

@@ -18,6 +18,7 @@ class CreateOwnersTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('email')->unique();
+            $table->boolean('hasVerifiedEmail')->default(0);
             $table->string('number');
             $table->timestamps();
         });

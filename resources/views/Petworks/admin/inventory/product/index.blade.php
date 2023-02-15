@@ -66,7 +66,7 @@
 
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Initial
+                                    <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Initial
                                         Stocks
                                     </th>
 
@@ -92,7 +92,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="d-flex flex-column justify-content-center px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center px-2 py-1 text-center">
                                                 <h6 class="mb-0 text-sm">{{ $product->category->category_name }}</h6>
                                             </div>
                                         </td>
@@ -114,7 +114,7 @@
 
 
                                         <td>
-                                            <div class="d-flex flex-column justify-content-center px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center px-2 py-1 text-center">
                                                 <h6 class="mb-0 text-sm">{{ $product->stock }}</h6>
                                             </div>
                                         </td>

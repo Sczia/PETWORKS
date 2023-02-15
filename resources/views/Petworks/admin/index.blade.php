@@ -1,16 +1,13 @@
 @extends('Petworks.admin.layouts.index')
 @section('sidebar')
+    <style>
+        .nav-link.active {
+            background-color: #7ba0c5 !important;
+        }
+    </style>
 
-<style>
-.nav-link.active{
-    background-color: #7ba0c5 !important;
-}
-     
-</style>
-
-    <aside
-        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 z-index-2 "
-        id="sidenav-main"  style="background-color:#FFFFFF;">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 z-index-2 "
+        id="sidenav-main" style="background-color:#FFFFFF;">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
@@ -44,23 +41,24 @@
                 </li>
 
                 {{-- ALBUM --}}
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::routeIs('admin.gallery.index') ? 'active' : '' }}"
-                        href="{{ route('admin.gallery.index') }}">
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i
-                                class="fa-solid fa-images text-sm opacity-10 {{ Request::routeIs('admin.gallery.index') ? '' : 'text-primary' }}"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Album</span>
-                    </a>
-                </li>
+                @if (Auth::guard('admin')->user()->roles == 'Secretary' || Auth::guard('admin')->user()->roles == 'Owner')
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::routeIs('admin.gallery.index') ? 'active' : '' }}"
+                            href="{{ route('admin.gallery.index') }}">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i
+                                    class="fa-solid fa-images text-sm opacity-10 {{ Request::routeIs('admin.gallery.index') ? '' : 'text-primary' }}"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Album</span>
+                        </a>
+                    </li>
+                @endif
 
 
 
 
-
-                @if (Auth::guard('admin')->user()->roles == 'Admin' || Auth::guard('admin')->user()->roles == 'Owner')
+                @if (Auth::guard('admin')->user()->roles == 'Secretary' || Auth::guard('admin')->user()->roles == 'Owner')
                     {{-- COntact us --}}
                     <li class="nav-item">
                         <a class="nav-link {{ Request::routeIs('admin.contact.index') ? 'active' : '' }}"
@@ -76,8 +74,10 @@
                     </li>
                 @endif
 
-                
-                @if (Auth::guard('admin')->user()->roles == 'Admin' || Auth::guard('admin')->user()->roles == 'Owner')
+              
+
+
+                @if (Auth::guard('admin')->user()->roles == 'Secretary' || Auth::guard('admin')->user()->roles == 'Owner')
                     {{-- Appointment --}}
                     <li class="nav-item">
                         <a class="nav-link collapsed {{ Request::routeIs(['admin.appointment.*', 'admin.pending.*', 'admin.confirm.*']) ? 'active' : '' }}"
@@ -132,7 +132,9 @@
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Records</h6>
                 </li>
 
-                @if (Auth::guard('admin')->user()->roles == 'Doctor' || Auth::guard('admin')->user()->roles == 'Admin' || Auth::guard('admin')->user()->roles == 'Owner')
+                @if (Auth::guard('admin')->user()->roles == 'Doctor' ||
+                        Auth::guard('admin')->user()->roles == 'Secretary' ||
+                        Auth::guard('admin')->user()->roles == 'Owner')
                     {{-- Client records Single --}}
                     <li class="nav-item">
                         <a class="nav-link {{ Request::routeIs('admin.owner.*') ? 'active' : '' }}"
@@ -148,30 +150,38 @@
                     </li>
                 @endif
 
-           {{--      @if (Auth::guard('admin')->user()->roles == 'Admin' || Auth::guard('admin')->user()->roles == 'Owner')
-
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('admin.doctor.index') ? 'active' : '' }}"
-                            href="{{ route('admin.doctor.index') }}">
-                            <div
-                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i
-                                    class="fa-solid fa-user-doctor text-sm opacity-10  {{ Request::routeIs('admin.doctor.*') ? '' : 'text-warning' }}"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Doctors Records</span>
-                        </a>
-                    </li>
-                @endif --}}
 
 
-                @if (Auth::guard('admin')->user()->roles == 'Owner')
+                @if (Auth::guard('admin')->user()->roles == 'Secretary' || Auth::guard('admin')->user()->roles == 'Owner')
                     {{-- INVENTORY --}}
                     <hr class="horizontal dark mt-1">
                     <li class="nav-item mt-3">
                         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">INVENTORY</h6>
                     </li>
+                @endif
 
 
+
+                @if (Auth::guard('admin')->user()->roles == 'Secretary' || Auth::guard('admin')->user()->roles == 'Owner')
+                    {{-- Daily Transaction --}}
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::routeIs('admin.daily.index') ? 'active' : '' }}"
+                            href="{{ route('admin.daily.index') }}">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+
+                                <i
+                                    class="fa-solid fa-money-bills text-sm opacity-10  {{ Request::routeIs('admin.daily.index') ? '' : 'text-success' }}"></i>
+
+                            </div>
+                            <span class="nav-link-text ms-1">Daily Transaction</span>
+                        </a>
+                    </li>
+                @endif
+
+
+
+                @if (Auth::guard('admin')->user()->roles == 'Owner')
                     {{-- Category Single --}}
                     <li class="nav-item">
                         <a class="nav-link {{ Request::routeIs('admin.category.index') ? 'active' : '' }}"
@@ -184,21 +194,6 @@
 
                             </div>
                             <span class="nav-link-text ms-1">Category</span>
-                        </a>
-                    </li>
-
-                    {{-- Daily Transaction --}}
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('admin.daily.index') ? 'active' : '' }}"
-                            href="{{ route('admin.daily.index') }}">
-                            <div
-                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-
-                                <i
-                                    class="fa-solid fa-money-bills text-sm opacity-10  {{ Request::routeIs('admin.daily.index') ? '' : 'text-success' }}"></i>
-
-                            </div>
-                            <span class="nav-link-text ms-1">Daily Ttransaction</span>
                         </a>
                     </li>
 
@@ -229,20 +224,25 @@
                         </a>
                     </li>
                 @endif
+
+                {{-- Daily Transaction --}}
+
                 {{-- Homepage dropdown --}}
 
                 <hr class="horizontal dark mt-1">
-                    <li class="nav-item mt-3">
-                        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">SETTINGS</h6>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link me-2 {{ Request::routeIs('admin.changepass.form') ? 'active' : '' }}" href="{{ route('admin.changepass.form') }}">
-                            <i class="fa-solid fa-user text-sm opacity-10 {{ Request::routeIs('admin.changepass.form') ? '' : 'text-info' }}"></i>Change Password
-                        </a>
-                    </li>
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">SETTINGS</h6>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link me-2 {{ Request::routeIs('admin.changepass.form') ? 'active' : '' }}"
+                        href="{{ route('admin.changepass.form') }}">
+                        <i
+                            class="fa-solid fa-user text-sm opacity-10 {{ Request::routeIs('admin.changepass.form') ? '' : 'text-info' }}"></i>Change
+                        Password
+                    </a>
+                </li>
             </ul>
         </div>
     </aside>
-
 @endsection

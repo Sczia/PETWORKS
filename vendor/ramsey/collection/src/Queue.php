@@ -35,22 +35,6 @@ class Queue extends AbstractArray implements QueueInterface
     use ValueToStringTrait;
 
     /**
-<<<<<<< HEAD
-=======
-     * The type of elements stored in this queue.
-     *
-     * A queue's type is immutable once it is set. For this reason, this
-     * property is set private.
-     */
-    private string $queueType;
-
-    /**
-     * The index of the head of the queue.
-     */
-    protected int $index = 0;
-
-    /**
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
      * Constructs a queue object of the specified type, optionally with the
      * specified data.
      *
@@ -69,11 +53,7 @@ class Queue extends AbstractArray implements QueueInterface
      * serves only to fulfill the `ArrayAccess` interface requirements. It is
      * invoked by other operations when adding values to the queue.
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException if $value is of the wrong type.
-=======
-     * @throws InvalidArgumentException if $value is of the wrong type
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
@@ -88,13 +68,7 @@ class Queue extends AbstractArray implements QueueInterface
     }
 
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException if $value is of the wrong type.
-=======
-     * @throws InvalidArgumentException if $value is of the wrong type
-     *
-     * @inheritDoc
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
      */
     public function add(mixed $element): bool
     {
@@ -110,21 +84,9 @@ class Queue extends AbstractArray implements QueueInterface
      */
     public function element(): mixed
     {
-<<<<<<< HEAD
         return $this->peek() ?? throw new NoSuchElementException(
             'Can\'t return element from Queue. Queue is empty.',
         );
-=======
-        $element = $this->peek();
-
-        if ($element === null) {
-            throw new NoSuchElementException(
-                'Can\'t return element from Queue. Queue is empty.',
-            );
-        }
-
-        return $element;
->>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
     }
 
     public function offer(mixed $element): bool

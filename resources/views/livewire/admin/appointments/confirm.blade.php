@@ -13,50 +13,50 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="complaint">Chief
-                                Complaint:</label>
+                                Complaint:<span class="text-danger ">*</span></label>
                             <input type="text" class="form-control" name="complaint" id="complaint"
-                                placeholder="Cheif Complaint" wire:model='complaint'>
+                                placeholder="Cheif Complaint" wire:model='complaint' required>
                         </div>
                     </div>
                     <div class="row mb-3 ">
                         <div class="col-md-6">
-                            <label for="weight">Body Weight:</label>
-                            <input type="number" class="form-control" name="weight" id="weight" placeholder="Body Weight" wire:model='weight'>
+                            <label for="weight">Body Weight:<span class="text-danger ">*</span></label>
+                            <input type="number" class="form-control" name="weight" id="weight" placeholder="Body Weight" wire:model='weight' required>
                         </div>
                         <div class="col-md-6">
-                            <label for="diet">Diet:</label>
-                            <input type="text" class="form-control" name="diet" id="diet" placeholder="Diet" wire:model='diet'>
+                            <label for="diet">Diet:<span class="text-danger ">*</span></label>
+                            <input type="text" class="form-control" name="diet" id="diet" placeholder="Diet" wire:model='diet' required>
                         </div>
                     </div>
                     <div class="row mb-3 ">
                         <div class="col-md-6">
-                            <label for="hr">HR:</label>
-                            <input type="number" class="form-control" name="hr" id="hr" placeholder="HR" wire:model='hr'>
+                            <label for="hr">HR:<span class="text-danger ">*</span></label>
+                            <input type="number" class="form-control" name="hr" id="hr" placeholder="HR" wire:model='hr' required>
                         </div>
                         <div class="col-md-6">
-                            <label for="rr">RR:</label>
-                            <input type="number" class="form-control" name="rr" id="rr" placeholder="RR" wire:model='rr'>
+                            <label for="rr">RR:<span class="text-danger ">*</span></label>
+                            <input type="number" class="form-control" name="rr" id="rr" placeholder="RR" wire:model='rr' required>
                         </div>
                     </div>
                     <div class="row mb-3 ">
                         <div class="col-md-3">
-                            <label for="temperature">Temperature:</label>
+                            <label for="temperature">Temperature:<span class="text-danger ">*</span></label>
                             <input type="number" class="form-control" name="temperature" id="temperature"
-                                placeholder="Temperature" wire:model='temperature'>
+                                placeholder="Temperature" wire:model='temperature' required>
                         </div>
                         <div class="col-md-3">
-                            <label for="color">Color:</label>
-                            <input type="text" class="form-control" name="color" id="color" placeholder="Color" wire:model='color'>
+                            <label for="color">Color:<span class="text-danger ">*</span></label>
+                            <input type="text" class="form-control" name="color" id="color" placeholder="Color" wire:model='color' required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="next_visit">Next Visit:</label>
-                            <input type="date" class="form-control" name="next_visit" id="next_visit" placeholder="Next" wire:model='next_visit'>
+                            <label for="next_visit">Next Visit:<span class="text-danger ">*</span></label>
+                            <input type="date" class="form-control" name="next_visit" id="next_visit" placeholder="Next" wire:model='next_visit' required>
                         </div>
                         <div class="col-md-6">
-                            <label for="doctor">Doctor:</label>
-                            <select class="form-select" aria-label="Default select example" name="doctor_id" id="doctor_id" wire:model='doctor_id'>
+                            <label for="doctor">Doctor:<span class="text-danger ">*</span></label>
+                            <select class="form-select" aria-label="Default select example" name="doctor_id" id="doctor_id" wire:model='doctor_id' required>
                                 <option selected>--- Selecet Doctor ---</option>
                                 @foreach ($doctors as $doctor)
                                     <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
@@ -65,6 +65,12 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <div class="col">
+                            <label for="picture">Picture<span class="text-danger ">*</span></label>
+                            <input class="form-control" type="file" id="picture" multiple wire:model='photos'>
+                        </div>
+                    </div>
+                 {{--    <div class="row mb-3">
                         <div class="col">
                             <label for="history">Medical History:</label>
                             <textarea class="form-control" placeholder="What is the Medical History?" id="history" name="history" wire:model='history'></textarea>
@@ -75,29 +81,24 @@
                             <label for="prescription">Prescription:</label>
                             <textarea class="form-control" placeholder="Doctors prescription" id="prescription" name="prescription" wire:model='prescription'></textarea>
                         </div>
-                    </div>
+                    </div> --}}
 
-                   <div class="row mb-3">
-                        <div class="col">
-                            <label for="picture">Picture</label>
-                            <input class="form-control" type="file" id="picture" multiple wire:model='photos'>
-                        </div>
-                    </div>
 
-                    <div class="row mb-3">
+
+                  {{--   <div class="row mb-3">
                         <div class="col">
                             <label for="comment">Comment:</label>
                             <textarea class="form-control" placeholder="Leave a comment here" id="comment" name="comment" wire:model='comment'></textarea>
                         </div>
-                    </div>
+                    </div> --}}
                 @break
 
                 @case(2)
-                    <div class="row mb-3">
+                    <div class="row mb-3" style="height: 90%">
                         <div class="col-md-6">
                             <label for="category_id">Category:</label>
                             <select class="form-select" aria-label="Default select example" name="category_id" id="category_id"
-                                wire:model='category_id'>
+                                wire:model='category_id' required>
                                 <option selected>--- Selecet category ---</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->category_name }}
@@ -105,10 +106,10 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 ">
                             <label for="productId">Products:</label>
                             <select class="form-select" aria-label="Default select example" name="product" id="productId"
-                                wire:model='productId'>
+                                wire:model='productId' required>
                                 <option value="">--- Selecet Product ---</option>
                                 @foreach($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->product_name }}
@@ -165,17 +166,17 @@
                             <td>{{ $product->product->price }}</td>
                             <td>
                                 <div class="d-flex">
-                                   <div class="row">          
+                                   <div class="row">
                                             <div class="col">
-                                                <button class="btn btn-sm btn-success px-2 my-0" wire:click='increase({{ $product->product_id }})'><i class="fa fa-plus " aria-hidden="true"></i></button>   
+                                                <button class="btn btn-sm btn-success px-2 my-0" wire:click='increase({{ $product->product_id }})'><i class="fa fa-plus " aria-hidden="true"></i></button>
                                             </div>
                                             <div class="col border">
-                                                <span>{{ $product->quantity }}</span>    
+                                                <span>{{ $product->quantity }}</span>
                                             </div>
                                             <div class="col">
                                                 <button class="btn btn-sm btn-danger px-2 my-0" wire:click='decrease({{ $product->product_id }})'><i class="fa fa-minus" aria-hidden="true"></i></button>
                                             </div>
-                                   </div>      
+                                   </div>
                                 </div>
                             </td>
                         </tr>

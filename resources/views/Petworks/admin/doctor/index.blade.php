@@ -34,27 +34,17 @@
 
 
 
-                                        {{-- BUTTONS --}}
-                                    {{--     <td>
-                                            <div class="d-flex justify-content-center px-2 py-1">
-                                                <button class="btn btn-link text-info px-3 mb-0" href="#"
-                                                    type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#view{{ $doctor->id }}">
-                                                    <i
-                                                    class="fa-solid fa-eye text-info me-2"
-                                                        aria-hidden="true"></i> Show</button>
-                                            @include('Petworks.admin.doctor.modal._show')
-                                        </td>
                                         <td>
                                             <div class="d-flex justify-content-center px-2 py-1">
-                                                <button class="btn btn-link text-danger px-3 mb-0" href="#"
-                                                    type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#delete{{ $doctor->id }}">
-                                                    <i
-                                                    class="fa-regular fa-trash-can text-danger me-2"
-                                                        aria-hidden="true"></i> Delete</button>
-                                            @include('Petworks.admin.doctor.modal._delete')
-                                        </td> --}}
+                                                <button class="btn btn-link text-primary px-3 mb-0" href="#" type="button"
+                                                    data-bs-toggle="modal" data-bs-target="#edit{{ $doctor->id }}">
+                                                    <i class="fa-solid fa-pen-to-square text-primary me-2" aria-hidden="true"></i>
+
+                                                    Edit
+                                                </button>
+                                                @include('Petworks.admin.doctor.modal.edit')
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

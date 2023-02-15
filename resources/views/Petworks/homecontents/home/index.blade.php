@@ -224,34 +224,14 @@
 
         <div class="box-container container">
 
-            {{-- <div class="box">
-                <img src="images/pic-1.png" alt="">
-                <h3>Cecille Sy</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ipsum eos? Perspiciatis expedita
-                    laudantium blanditiis cupiditate at natus, quam alias?</p>
+            @foreach ($doctors as $doctor)
+                <div class="box">
+                    <img src="images/doc.png" alt="">
+                    <h3>{{ $doctor->name }}</h3>
+                    <p>Clinic Doctor</p>
 
-            </div> --}}
-
-            <div class="box">
-                <img src="images/doc.png" alt="">
-                <h3>Doctor Luealla</h3>
-                <p>Clinic Doctor</p>
-
-            </div>
-            <div class="box">
-                <img src="images/doc.png" alt="">
-                <h3>Cecille Sy</h3>
-                <p>Owner and Founder of Petworks Veterinary Clinic</p>
-
-            </div>
-            <div class="box">
-                <img src="images/doc.png" alt="">
-                <h3>Doctor Edmundo Sy</h3>
-                <p>Clinic Doctor</p>
-
-            </div>
-
-
+                </div>
+            @endforeach
 
         </div>
 
@@ -299,7 +279,7 @@
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
 
-                <form action="{{ route('admin.contact.store') }}" class="col-md-6" method="POST">
+                <form action="{{ route('contact.store') }}" class="col-md-6" method="POST">
                     @csrf
                     <h3>get in touch</h3>
                     <input type="text" placeholder="your name" name="name" class="box">
@@ -381,7 +361,7 @@
 
     <section class="newsletter">
         <div class="container">
-            <h3>Thank you for vsiting our website</h3>
+            <h3>Thank you for visiting our website</h3>
             {{-- <p>subscribe for latest upadates</p>
             <form action="">
                 <input type="email" name="" placeholder="enter your email" id="" class="email">
@@ -406,7 +386,7 @@
             <a href="https://twitter.com/petworksclinic" class="fab fa-twitter"></a>
             {{-- <a href="#" class="fab fa-github"></a> --}}
         </div>
-        <p class="credit"> created by <span>BSIT 4-1 PUP Calauan Campus</span> | all rights reserved 2023 </p>
+        <h6 class="credit"> created by <span>BSIT 4-1 PUP Calauan Campus</span> | all rights reserved 2023 </h6>
 
     </section>
     <!-- footer section ends -->

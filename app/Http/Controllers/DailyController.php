@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportDailyTransaction;
+use App\Exports\UsersExport;
 use App\Models\Daily;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DailyController extends Controller
 {
@@ -83,5 +86,16 @@ class DailyController extends Controller
     public function destroy(Daily $daily)
     {
         //
+    }
+
+    public function download()
+    {
+        $daylies = Daily::with('appointment')->whereDay('created_at','=',now()->format('d'))->whereMonth('created_at','=',now()->format('m'))->get();
+        return view('Petworks.admin.inventory.daily.modal._pdf',compact('daylies'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new ExportDailyTransaction, 'daily.xlsx');
     }
 }

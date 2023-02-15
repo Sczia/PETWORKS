@@ -7,19 +7,30 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form wire:submit.prevent="edit({{ $consultation->id }},'{{ $consultation->pet_id }}')" method="POST">
+            <form action="{{ route('admin.owner.update', $consultation->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="picture" class="form-label">Picture</label>
-                        <input class="form-control" type="file" id="picture" wire:model='picture'>
-                    </div>
 
                     <div class="mb-3">
-                        <label for="comment" class="form-label">Comment</label>
-                        <textarea class="form-control" id="comment" rows="3" wire:model='comment'>{{ $consultation->comment }}</textarea>
+                        <label for="history" class="text-dark text-black font-weight-bold">Medical History<span class="text-danger ">*</span></label>
+                        <input type="text" class="form-control" name="history" id="history" placeholder=""
+                            value="{{ $consultation->history }}">
                     </div>
-                    <div wire:loading wire:target="picture">Uploading...</div>
+                    <div class="mb-3">
+                        <label for="prescription" class="text-dark text-black font-weight-bold">Prescription<span class="text-danger ">*</span></label>
+                        <input type="text" class="form-control" name="prescription" id="prescription" placeholder=""
+                            value="{{ $consultation->prescription }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="comment" class="text-dark text-black font-weight-bold">Comment<span class="text-danger ">*</span></label>
+                        <input type="text" class="form-control" name="comment" id="comment" placeholder=""
+                            value="{{ $consultation->comment }}">
+                    </div>
+
+
+
+
                 </div>
                 @if (session()->has('message'))
                     <div class="alert alert-success">
@@ -31,6 +42,9 @@
                         {{ session('message') }}
                     </div>
                 @endif
+
+
+
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Save Changes</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"

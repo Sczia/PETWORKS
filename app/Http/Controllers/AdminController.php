@@ -16,10 +16,11 @@ class AdminController extends Controller
     public function index()
     {
 /*         $pendingCount = Appointment::where('pending', '=', 1)->count(); */
-        $pendingCount = Appointment::where('status', '=', 'pending')->count(); 
+        $pendingCount = Appointment::where('status', '=', 'pending')->count();
         $confirmCount = Appointment::where('status', '=', 'confirmed')->count();
         $requestCount = Appointment::where('status', '=', 'request')->count();
         $cancelledCount = Appointment::where('status', '=', 'cancelled')->count();
+        $contactCount = Appointment::where('status', '=', 'cancelled')->count();
         //$recordCount = Appointment::count();
         $recordCount = Owner::whereHas('appointments',
         function ($query) {
@@ -33,7 +34,7 @@ class AdminController extends Controller
             }
         )->orderBy('name', 'ASC')->take(5)->get();
 
-        return view('Petworks.admin.dashboard.index', compact('recordCount', 'confirmCount', 'pendingCount', 'cancelledCount', 'requestCount', 'owners'));
+        return view('Petworks.admin.dashboard.index', compact('recordCount', 'confirmCount', 'pendingCount', 'cancelledCount', 'requestCount', 'owners','contactCount'));
     }
 
     /**

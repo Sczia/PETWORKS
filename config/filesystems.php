@@ -68,7 +68,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('uploads') => storage_path('app/uploads'),
+       '/home/u918758834/domains/petworksveterinary.online//public_html/uploads' => storage_path('app/uploads'),
     ],
 
 ];

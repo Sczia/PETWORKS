@@ -18,11 +18,12 @@ class Gallery extends Component
     public function save()
     {
         $this->validate([
-            'photos.*' => 'image|mimes:png,jpg|max:5024', // 1MB Max
+            'title' => 'required',
+            'date' => 'required',
+            'photos.*' => 'required|mimes:png,jpg|max:5024', // 5MB Max
         ]);
         $title = Str::replace(' ', '-', Str::lower($this->title));
-        $folder = 'gallery/uploads/';
-        $path = 'public/'.$folder. $title;
+        $path = 'uploads/gallery/' . $title;
         $photo = $this->photos[0];
         $filename = $title . '-.' . $photo->getClientOriginalExtension();
         $photo->storeAs($path, $filename);
@@ -46,7 +47,7 @@ class Gallery extends Component
                 ModelsPhotos::create([
                     'album_id' => $gallery_id,
                     'photo' => Str::lower($this->title . '-' . $key),
-                    'path' => $folder .$title.'/'. $filename,
+                    'path' => $path.'/'. $filename,
                 ]);
                 // Save the photo to the given path
                 $photo->storeAs($path, $filename);
@@ -59,7 +60,7 @@ class Gallery extends Component
             return redirect(request()->header('Referer'));
         }
     }
-   
+
 
     public function render()
     {

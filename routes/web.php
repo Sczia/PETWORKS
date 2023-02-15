@@ -16,6 +16,7 @@ use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,13 +40,19 @@ Route::name('gallery.')->prefix('gallery')->controller(GalleryController::class)
     Route::get('/',  'indexHome')->name('index');
     Route::get('/{id}',  'showHome')->name('show');
 });
-
+Route::prefix('mail')->name('mail.send.')->controller(MailController::class)->group(function () {
+    Route::get('/verification',  'sendVerificationEmail')->name('verification');
+    Route::get('/verify',  'verifyEmail')->name('verify');
+});
+Route::prefix('contact')->name('contact.')->controller(ContactController::class)->group(function () {
+    Route::post('/store',  'store')->name('store');
+});
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login/form', [HomeController::class, 'form'])->name('user.login.form');
     Route::get('/settings', [LoginController::class, 'changepassform'])->name('changepass.form');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('user.login');
     Route::put('/updatepass/{id}', [LoginController::class, 'updatepass'])->name('changepass.update');
-    
+
     Route::middleware(['isActive'])->group(function () {
         Route::post('/logout', [LoginController::class, 'logout'])->name('user.logout');
         /* ADMIN */
@@ -70,7 +77,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/update/{id}', 'update')->name('update');
             Route::post('/pending/{id}',  'reply')->name('reply');
             Route::get('/pdf/{id}',  'download')->name('download');
-
         });
         /* CANCEL*/
         Route::prefix('cancel')->name('cancel.')->controller(CancelController::class)->group(function () {
@@ -99,6 +105,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/store',  'store')->name('store');
             Route::post('/reply',  'reply')->name('reply');
             Route::delete('/{id}',  'destroy')->name('destroy');
+            Route::put('/update{id}',  'update')->name('update');
         });
         /* RECORDS */
         Route::prefix('records')->name('records.')->controller(RecordController::class)->group(function () {
@@ -129,17 +136,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/',  'index')->name('index');
             Route::post('/store',  'store')->name('store');
             Route::put('/update{id}',  'update')->name('update');
+            Route::get('/show/{id}',  'show')->name('show');
         });
 
-          /* DAILY */
+        /* DAILY */
         Route::prefix('daily')->name('daily.')->controller(DailyController::class)->group(function () {
             Route::get('/',  'index')->name('index');
             Route::post('/store',  'store')->name('store');
             Route::put('/update{id}',  'update')->name('update');
+            Route::get('/pdf',  'download')->name('download');
+            Route::get('/export',  'export')->name('export');
+           
         });
 
-           /* ALBUM */
-           Route::prefix('album')->name('album.')->controller(AlbumController::class)->group(function () {
+        /* ALBUM */
+        Route::prefix('album')->name('album.')->controller(AlbumController::class)->group(function () {
             Route::get('/',  'index')->name('index');
             Route::post('/store',  'store')->name('store');
             Route::post('/reply',  'reply')->name('reply');
@@ -152,5 +163,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/{id}', 'showAdmin')->name('show');
             Route::delete('/delete/{id}', 'destroy')->name('destroy');
         });
+
+        /* reminder */
+        Route::prefix('reminder')->name('reminder.')->controller(ReminderController::class)->group(function () {
+            Route::get('/',  'index')->name('index');
+        });
+
+        /* EXCEL */
+        Route::get('users/export/', [UsersController::class, 'export']);
     });
 });

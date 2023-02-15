@@ -16,17 +16,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sold_products = SoldProduct::all();
-        foreach ($sold_products as $key => $product) {
-          /*   sale::create(); */
-
-            sale::with('product')->where('product_id','=',$product->product_id)->firstOrCreate([
-                'product_id' => $product->product_id,
-                'sold' => $product->quantity,
-                'remain' => $product->product->stock -$product->quantity,
-                'sale' => $product->quantity*$product->product->price
-            ]);
-        }
+      
         $sales = Sale::all();
         return view('Petworks.admin.inventory.sales.index', compact('sales'));
     }
@@ -80,9 +70,10 @@ class SaleController extends Controller
      * @param  \App\Models\sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function show(sale $sale)
+    public function show($id)
     {
-        //
+        $sales = SoldProduct::where('product_id', '=', $id)->get();
+        return view('Petworks.admin.inventory.sales.show', compact('sales'));
     }
 
     /**

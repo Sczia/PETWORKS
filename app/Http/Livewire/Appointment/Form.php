@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Appointment;
 
+use App\Http\Controllers\MailController as ControllersMailController;
+use App\Http\Controllers\Manage\MailController;
 use App\Models\Appointment;
 use App\Models\Owner;
 use App\Models\Pet;
@@ -9,7 +11,6 @@ use Livewire\Component;
 
 class Form extends Component
 {
-
     public $services;
     /* steps */
     public $currentStep;
@@ -56,13 +57,66 @@ class Form extends Component
 
     public $cancelBtn = false;
     public $yes = false;
-    public $cancelId =0;
-    protected $rules = [
-        'date' => 'required',
-        'time' => 'required',
-    ];
-    public function updated()
+    public $cancelId = 0;
+    public $attempt = 0, $limit = 3, $rememberEmail;
+    public function validateData()
     {
+        switch ($this->currentStep) {
+            case 2:
+                if ($this->isOldClient) {
+                    if ($this->hasEmail) {
+                        if ($this->addPet) {
+                            $this->validate([
+                                // pet info
+                                'pet_name' => 'required',
+                                'pet_type' => 'required',
+                                'age' => 'required',
+                                'birthdate' => 'required',
+                                'gender' => 'required',
+                                'breed' => 'required',
+                                'color' => 'required',
+                                /* appointment */
+                                'reason_id' => 'required',
+                                'date' => 'required',
+                                'time' => 'required',
+                            ]);
+                        } else {
+                            $this->validate([
+                                /* appointment */
+                                'reason_id' => 'required',
+                                'date' => 'required',
+                                'time' => 'required',
+                            ]);
+                        }
+                    } else {
+                        $this->validate([
+                            'emailAddress' => 'required|email',
+                        ]);
+                    }
+                }
+                if ($this->isNewClient) {
+                    $this->validate([
+                        /* owner */
+                        'name' => 'required',
+                        'email' => 'required|email|unique:owners,email',
+                        'number' => 'required|numeric|digits:11',
+                        'address' => 'required',
+                        // pet info
+                        'pet_name' => 'required',
+                        'pet_type' => 'required',
+                        'age' => 'required',
+                        'birthdate' => 'required',
+                        'gender' => 'required',
+                        'breed' => 'required',
+                        'color' => 'required',
+                        /* appointment */
+                        'reason_id' => 'required',
+                        'date' => 'required',
+                        'time' => 'required',
+                    ]);
+                }
+                break;
+        }
     }
 
     public function increment()
@@ -81,7 +135,11 @@ class Form extends Component
     }
     public function appointment()
     {
+        $this->resetErrorBag();
+        $this->validateData();
         if ($this->isNewClient) {
+            $url = route('mail.send.verify', ['token' => $this->email]);
+            ControllersMailController::sendVerificationEmail($this->name, $this->email, $url);
             $owner_id = Owner::create(
                 [
                     'name' => $this->name,
@@ -190,7 +248,7 @@ class Form extends Component
     {
         $appointment = Appointment::find($id);
         if ($appointment->status == 'request' || $appointment->status == 'pending') {
-            $appointment->update(['status' => 'cancelled','cancelled_by' => 'Client']);
+            $appointment->update(['status' => 'cancelled', 'cancelled_by' => 'Client']);
             /* session success message */
             session()->flash('success', 'Appointment cancelled successfully');
         }
@@ -200,6 +258,8 @@ class Form extends Component
     }
     public function verifyEmail()
     {
+        $this->resetErrorBag();
+        $this->validateData();
         try {
             $this->owner = Owner::where('email', '=', $this->emailAddress)->firstOrFail();
             if ($this->isOldClient) {
@@ -211,8 +271,15 @@ class Form extends Component
             }
             $this->hasEmail = true;
         } catch (\Throwable $th) {
-            $this->addError('emailAddress', 'Invalid Email');
-            $this->hasEmail = false;
+            $this->attempt++;
+            if ($this->attempt > $this->limit) {
+                /* redirect back */
+                alert()->error('SYSTEM MESSAGE', ' Attempted too many times')->autoClose(5000)->width('500px')->animation('animate__fadeInRight', 'animate__fadeOutDown')->timerProgressBar();
+                return redirect(request()->header('Referer'));
+            } else {
+                $this->addError('emailAddress', 'Email not found');
+                $this->hasEmail = false;
+            }
         }
         # code...
 
@@ -220,10 +287,11 @@ class Form extends Component
     public function back()
     {
         $this->decrement();
-        $this->reset('isNewClient', 'isOldClient', 'cancel');
+        $this->resetExcept('currentStep', 'services');
     }
     public function addPet()
     {
+        $this->resetErrorBag();
         if ($this->addPet) {
             $this->addPet = false;
         } else {
