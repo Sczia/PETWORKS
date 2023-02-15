@@ -128,6 +128,10 @@
                             <th>Products</th>
                             <th>Service</th>
                             <th>Total amount</th>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                         </tr>
                     </thead>
 
@@ -135,17 +139,24 @@
                         @php
                             $product_sub = 0;
                             $service_sub = 0;
+<<<<<<< HEAD
                             $total_product = 0;
                             $total_service = 0;
                             $overall_total = 0;
+=======
+                            $total = 0;
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                         @endphp
                         @foreach ($daylies as $daily)
                             <tr>
                                 @foreach ($daily->appointment->products as $product)
                                     @php
                                         $product_sub = ($product_sub + $product->product->price) * $product->quantity;
+<<<<<<< HEAD
                                         $total_product += $product_sub;
                                         $total_service += $daily->appointment->service->price;
+=======
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                                     @endphp
                                 @endforeach
                                 <td>{{ $daily->appointment->owner->name }}</td>
@@ -155,6 +166,7 @@
                                 <td>₱{{ number_format($daily->amount, 2, '.', ',') }}</td>
                             </tr>
                         @endforeach
+<<<<<<< HEAD
                     </tbody>
 
                     <tfoot>
@@ -165,6 +177,15 @@
                             <td class="text-danger font-weight-bold">₱{{ number_format($total_product+$total_service, 2, '.', ',') }}</td>
                         </tr>
                     </tfoot>
+=======
+
+
+
+
+
+
+                    </tbody>
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
 
                 </table>
 

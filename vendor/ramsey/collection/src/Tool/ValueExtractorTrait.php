@@ -18,6 +18,16 @@ use Ramsey\Collection\Exception\InvalidPropertyOrMethod;
 use Ramsey\Collection\Exception\UnsupportedOperationException;
 
 use function is_array;
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+use function is_array;
+=======
+use function get_class;
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
 use function is_object;
 use function method_exists;
 use function property_exists;
@@ -45,6 +55,17 @@ trait ValueExtractorTrait
      * @throws UnsupportedOperationException
      */
     protected function extractValue(mixed $element, ?string $propertyOrMethod): mixed
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    protected function extractValue(mixed $element, ?string $propertyOrMethod): mixed
+=======
+    // phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+    protected function extractValue($object, string $propertyOrMethod)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         if ($propertyOrMethod === null) {
             return $element;
@@ -64,6 +85,13 @@ trait ValueExtractorTrait
             ));
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
         if (property_exists($element, $propertyOrMethod)) {
             return $element->$propertyOrMethod;
         }
@@ -77,5 +105,17 @@ trait ValueExtractorTrait
             $propertyOrMethod,
             $element::class,
         ));
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+        throw new ValueExtractionException(
+            // phpcs:ignore SlevomatCodingStandard.Classes.ModernClassNameReference.ClassNameReferencedViaFunctionCall
+            sprintf('Method or property "%s" not defined in %s', $propertyOrMethod, get_class($object)),
+        );
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     }
 }

@@ -75,11 +75,19 @@
                                     Doctor
                                 </th>
                                 <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7">
+<<<<<<< HEAD
                                     More
                                  </th>
                                  <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7">
                                      Action
                                  </th>
+=======
+                                   More
+                                </th>
+                                <th class="text-uppercase  text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Action
+                                </th>
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
 
 
                             </tr>
@@ -90,6 +98,7 @@
                             <tr>
 
                                 <td>{{ $consultation->service->service }}</td>
+
                                 <td>
                                     <div class="d-flex flex-column px-2 py-1">
                                         <h5 class="mb-0 text-sm">{{ date('F d, Y', strtotime($consultation->date)) }}</h5>
@@ -98,7 +107,9 @@
                                         </p>
                                     </div>
                                 </td>
+
                                 <td>{{ $consultation->doctor->name}}</td>
+
                                 <td>
                                     <div>
                                         <button type="button" class="btn btn-link btn-sm text-info"
@@ -108,16 +119,21 @@
                                         </button>
                                         @include('Petworks.admin.owner.modal._show')
                                     </div>
+
                                 </td>
+<<<<<<< HEAD
                                <td>
+=======
+                                <td>
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                                     <div>
                                         <button type="button" class="btn btn-link btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit{{ $consultation->id }}">
-                                            <i class="fa-solid fa-pen-to-square text-primary me-2"
-                                                aria-hidden="true"></i>
-                                            Edit
-                                        </button>
-                                        @include('Petworks.admin.owner.modal._edit')
+                                        data-bs-target="#edit{{ $consultation->id }}">
+                                        <i class="fa-solid fa-pen-to-square text-primary me-2"
+                                            aria-hidden="true"></i>
+                                        Edit
+                                    </button>
+                                    @include('Petworks.admin.owner.modal._edit')
                                     </div>
                                 </td>
 

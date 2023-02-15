@@ -97,6 +97,14 @@ class UuidBuilder implements UuidBuilderInterface
                     return new UuidV7($fields, $this->numberConverter, $codec, $this->unixTimeConverter);
                 case Uuid::UUID_TYPE_CUSTOM:
                     return new UuidV8($fields, $this->numberConverter, $codec, $this->timeConverter);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
             }
 
             throw new UnsupportedOperationException(

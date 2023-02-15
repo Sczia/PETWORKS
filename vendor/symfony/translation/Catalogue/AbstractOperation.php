@@ -78,6 +78,19 @@ abstract class AbstractOperation implements OperationInterface
     }
 
     public function getDomains(): array
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    public function getDomains(): array
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getDomains()
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         if (null === $this->domains) {
             $domains = [];
@@ -98,6 +111,19 @@ abstract class AbstractOperation implements OperationInterface
     }
 
     public function getMessages(string $domain): array
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    public function getMessages(string $domain): array
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getMessages(string $domain)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         if (!\in_array($domain, $this->getDomains())) {
             throw new InvalidArgumentException(sprintf('Invalid domain: "%s".', $domain));
@@ -111,6 +137,19 @@ abstract class AbstractOperation implements OperationInterface
     }
 
     public function getNewMessages(string $domain): array
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    public function getNewMessages(string $domain): array
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getNewMessages(string $domain)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         if (!\in_array($domain, $this->getDomains())) {
             throw new InvalidArgumentException(sprintf('Invalid domain: "%s".', $domain));
@@ -124,6 +163,19 @@ abstract class AbstractOperation implements OperationInterface
     }
 
     public function getObsoleteMessages(string $domain): array
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    public function getObsoleteMessages(string $domain): array
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getObsoleteMessages(string $domain)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         if (!\in_array($domain, $this->getDomains())) {
             throw new InvalidArgumentException(sprintf('Invalid domain: "%s".', $domain));
@@ -137,6 +189,19 @@ abstract class AbstractOperation implements OperationInterface
     }
 
     public function getResult(): MessageCatalogueInterface
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    public function getResult(): MessageCatalogueInterface
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getResult()
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         foreach ($this->getDomains() as $domain) {
             if (!isset($this->messages[$domain])) {

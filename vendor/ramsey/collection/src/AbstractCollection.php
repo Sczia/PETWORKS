@@ -36,6 +36,16 @@ use function array_uintersect;
 use function in_array;
 use function is_int;
 use function is_object;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+use function reset;
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
 use function spl_object_id;
 use function sprintf;
 use function usort;
@@ -177,6 +187,16 @@ abstract class AbstractCollection extends AbstractArray implements CollectionInt
                 $bValue = $this->extractValue($b, $propertyOrMethod);
 
                 return ($aValue <=> $bValue) * ($order === Sort::Descending ? -1 : 1);
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+                return ($aValue <=> $bValue) * ($order === Sort::Descending ? -1 : 1);
+=======
+                return ($aValue <=> $bValue) * ($order === self::SORT_DESC ? -1 : 1);
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
             },
         );
 
@@ -383,11 +403,36 @@ abstract class AbstractCollection extends AbstractArray implements CollectionInt
      */
     private function getUniformType(CollectionInterface $collection): string
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
         return match ($collection->getType()) {
             'integer' => 'int',
             'boolean' => 'bool',
             'double' => 'float',
             default => $collection->getType(),
         };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+        switch ($collection->getType()) {
+            case 'integer':
+                return 'int';
+            case 'boolean':
+                return 'bool';
+            case 'double':
+                return 'float';
+            default:
+                return $collection->getType();
+        }
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     }
 }

@@ -321,6 +321,14 @@ class UuidFactory implements UuidFactoryInterface
     }
 
     /**
+     * @psalm-pure
+     */
+    public function fromHexadecimal(Hexadecimal $hex): UuidInterface
+    {
+        return $this->codec->decode($hex->__toString());
+    }
+
+    /**
      * @inheritDoc
      */
     public function uuid1($node = null, ?int $clockSeq = null): UuidInterface
@@ -406,6 +414,27 @@ class UuidFactory implements UuidFactoryInterface
         $bytes = $this->unixTimeGenerator->generate(null, null, $dateTime);
 
         return $this->uuidFromBytesAndVersion($bytes, Uuid::UUID_TYPE_UNIX_TIME);
+    }
+
+    /**
+     * Returns a version 8 (Custom) UUID
+     *
+     * The bytes provided may contain any value according to your application's
+     * needs. Be aware, however, that other applications may not understand the
+     * semantics of the value.
+     *
+     * @param string $bytes A 16-byte octet string. This is an open blob
+     *     of data that you may fill with 128 bits of information. Be aware,
+     *     however, bits 48 through 51 will be replaced with the UUID version
+     *     field, and bits 64 and 65 will be replaced with the UUID variant. You
+     *     MUST NOT rely on these bits for your application needs.
+     *
+     * @return UuidInterface A UuidInterface instance that represents a
+     *     version 8 UUID
+     */
+    public function uuid8(string $bytes): UuidInterface
+    {
+        return $this->uuidFromBytesAndVersion($bytes, Uuid::UUID_TYPE_CUSTOM);
     }
 
     /**

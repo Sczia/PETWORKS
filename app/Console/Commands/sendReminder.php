@@ -53,11 +53,15 @@ class sendReminder extends Command
                 'pet_name' => $appointment->pet->pet_name,
                 'date' => $appointment->next_visit,
             ];
+<<<<<<< HEAD
        $response = Nexmo::message()->send([
+=======
+        /*     $response = Nexmo::message()->send([
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                 'to'   => "63" . Str::substr($appointment->owner->number, 1, 10),
                 'from' => '09361681322',
                 'text' => "Good Day  ".$data['name'].". This is Petworks Veterinary Clinic, please be reminded of your schedule today  ".date('F d, Y',strtotime($data['date']))." for follow up check up for ". $data['pet_name']." . "
-            ]);
+            ]); */
             Mail::to($appointment->owner->email)->send(new Reminder($data));
         }
         $this->output->success('Reminder sent');

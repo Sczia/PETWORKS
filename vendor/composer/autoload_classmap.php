@@ -61,6 +61,7 @@ return array(
     'App\\Mail\\Reminder' => $baseDir . '/app/Mail/Reminder.php',
     'App\\Models\\Album' => $baseDir . '/app/Models/Album.php',
     'App\\Models\\Appointment' => $baseDir . '/app/Models/Appointment.php',
+    'App\\Models\\Backup' => $baseDir . '/app/Models/Backup.php',
     'App\\Models\\Calendar' => $baseDir . '/app/Models/Calendar.php',
     'App\\Models\\Client' => $baseDir . '/app/Models/Client.php',
     'App\\Models\\Contact' => $baseDir . '/app/Models/Contact.php',
@@ -5113,6 +5114,14 @@ return array(
     'Ramsey\\Uuid\\Rfc4122\\UuidV6' => $vendorDir . '/ramsey/uuid/src/Rfc4122/UuidV6.php',
     'Ramsey\\Uuid\\Rfc4122\\UuidV7' => $vendorDir . '/ramsey/uuid/src/Rfc4122/UuidV7.php',
     'Ramsey\\Uuid\\Rfc4122\\UuidV8' => $vendorDir . '/ramsey/uuid/src/Rfc4122/UuidV8.php',
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     'Ramsey\\Uuid\\Rfc4122\\Validator' => $vendorDir . '/ramsey/uuid/src/Rfc4122/Validator.php',
     'Ramsey\\Uuid\\Rfc4122\\VariantTrait' => $vendorDir . '/ramsey/uuid/src/Rfc4122/VariantTrait.php',
     'Ramsey\\Uuid\\Rfc4122\\VersionTrait' => $vendorDir . '/ramsey/uuid/src/Rfc4122/VersionTrait.php',

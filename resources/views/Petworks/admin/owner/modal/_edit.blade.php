@@ -11,6 +11,7 @@
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
+<<<<<<< HEAD
 
                     <div class="mb-3">
                         <label for="history" class="text-dark text-black font-weight-bold">Medical History<span class="text-danger ">*</span></label>
@@ -19,11 +20,74 @@
                     </div>
                     <div class="mb-3">
                         <label for="prescription" class="text-dark text-black font-weight-bold">Prescription<span class="text-danger ">*</span></label>
+=======
+                   {{--  <div class="mb-3">
+                        <label for="picture" class="form-label">Picture</label>
+                        <input class="form-control" type="file" id="picture" wire:model='picture'>
+                    </div>
+
+                    <div wire:loading wire:target="picture">Uploading...</div> --}}
+
+                   {{--  <div class="mb-3">
+                        <label for="complaint" class="text-dark text-black font-weight-bold">Chief Complaint</label>
+                        <input type="text" class="form-control" name="complaint" id="complaint" placeholder=""
+                            value="{{ $consultation->complaint }}">
+                    </div>
+
+                    <div class="mb-3">
+                         <label for="weight" class="text-dark text-black font-weight-bold">Weight</label>
+                        <input type="text" class="form-control" name="weight" id="weight" placeholder=""
+                            value="{{ $consultation->weight }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="hr" class="text-dark text-black font-weight-bold">HR</label>
+                        <input type="text" class="form-control" name="hr" id="hr" placeholder=""
+                            value="{{ $consultation->hr }}">
+                    </div>
+
+                    <div class="mb-3">
+                         <label for="rr" class="text-dark text-black font-weight-bold">RR</label>
+                        <input type="text" class="form-control" name="rr" id="rr" placeholder=""
+                            value="{{ $consultation->rr }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="temperature" class="text-dark text-black font-weight-bold">Temperature</label>
+                        <input type="text" class="form-control" name="temperature" id="temperature" placeholder=""
+                            value="{{ $consultation->temperature }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="diet" class="text-dark text-black font-weight-bold">Diet</label>
+                        <input type="text" class="form-control" name="diet" id="diet" placeholder=""
+                            value="{{ $consultation->diet }}">
+                    </div> --}}
+              {{--       <div class="mb-3">
+                         <label for="history" class="text-dark text-black font-weight-bold">Doctor</label>
+                        <input type="text" class="form-control" name="doctor_id" id="doctor_id" placeholder=""
+                            value="{{ $consultation->doctor_id }}">
+                    </div> --}}
+               {{--      <div class="mb-3">
+                        <label for="next_visit" class="text-dark text-black font-weight-bold">Next Visit</label>
+                        <input type="text" class="form-control" name="next_visit" id="next_visit" placeholder=""
+                            value="{{ $consultation->next_visit }}">
+                    </div> --}}
+                    <div class="mb-3">
+                        <label for="history" class="text-dark text-black font-weight-bold">Medical History</label>
+                        <input type="text" class="form-control" name="history" id="history" placeholder=""
+                            value="{{ $consultation->history }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="prescription" class="text-dark text-black font-weight-bold">Prescription</label>
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                         <input type="text" class="form-control" name="prescription" id="prescription" placeholder=""
                             value="{{ $consultation->prescription }}">
                     </div>
                     <div class="mb-3">
+<<<<<<< HEAD
                         <label for="comment" class="text-dark text-black font-weight-bold">Comment<span class="text-danger ">*</span></label>
+=======
+                        <label for="comment" class="text-dark text-black font-weight-bold">Comment</label>
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                         <input type="text" class="form-control" name="comment" id="comment" placeholder=""
                             value="{{ $consultation->comment }}">
                     </div>

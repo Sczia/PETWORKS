@@ -75,11 +75,37 @@ class AsciiSlugger implements SluggerInterface, LocaleAwareInterface
     }
 
     public function setLocale(string $locale)
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    public function setLocale(string $locale)
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocale($locale)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         $this->defaultLocale = $locale;
     }
 
     public function getLocale(): string
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    public function getLocale(): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocale()
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         return $this->defaultLocale;
     }

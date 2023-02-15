@@ -90,6 +90,7 @@ class DailyController extends Controller
 
     public function download()
     {
+<<<<<<< HEAD
         $daylies = Daily::with('appointment')->whereDay('created_at','=',now()->format('d'))->whereMonth('created_at','=',now()->format('m'))->get();
         return view('Petworks.admin.inventory.daily.modal._pdf',compact('daylies'));
     }
@@ -98,4 +99,9 @@ class DailyController extends Controller
     {
         return Excel::download(new ExportDailyTransaction, 'daily.xlsx');
     }
+=======
+        $daylies=Daily::all();
+        return view('Petworks.admin.inventory.daily.modal._pdf',compact('daylies'));
+    }
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
 }

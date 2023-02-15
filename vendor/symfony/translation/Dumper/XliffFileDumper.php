@@ -27,6 +27,18 @@ class XliffFileDumper extends FileDumper
     }
 
     public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = []): string
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = [])
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         $xliffVersion = '1.2';
         if (\array_key_exists('xliff_version', $options)) {
@@ -50,6 +62,19 @@ class XliffFileDumper extends FileDumper
     }
 
     protected function getExtension(): string
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    protected function getExtension(): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    protected function getExtension()
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         return $this->extension;
     }

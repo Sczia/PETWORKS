@@ -64,7 +64,14 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row mb-3">
+
+                   <div class="row mb-3">
+                        <div class="col">
+                            <label for="picture">Picture</label>
+                            <input class="form-control" type="file" id="picture" multiple wire:model='photos'>
+                        </div>
+                    </div>
+                 {{--    <div class="row mb-3">
                         <div class="col">
                             <label for="picture">Picture<span class="text-danger ">*</span></label>
                             <input class="form-control" type="file" id="picture" multiple wire:model='photos'>
@@ -83,9 +90,13 @@
                         </div>
                     </div> --}}
 
+<<<<<<< HEAD
 
 
                   {{--   <div class="row mb-3">
+=======
+                    <div class="row mb-3">
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                         <div class="col">
                             <label for="comment">Comment:</label>
                             <textarea class="form-control" placeholder="Leave a comment here" id="comment" name="comment" wire:model='comment'></textarea>
@@ -166,17 +177,42 @@
                             <td>{{ $product->product->price }}</td>
                             <td>
                                 <div class="d-flex">
+<<<<<<< HEAD
+                                   <div class="row">
+=======
+<<<<<<< HEAD
                                    <div class="row">
                                             <div class="col">
                                                 <button class="btn btn-sm btn-success px-2 my-0" wire:click='increase({{ $product->product_id }})'><i class="fa fa-plus " aria-hidden="true"></i></button>
                                             </div>
                                             <div class="col border">
                                                 <span>{{ $product->quantity }}</span>
+=======
+                                   <div class="row">          
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
+                                            <div class="col">
+                                                <button class="btn btn-sm btn-success px-2 my-0" wire:click='increase({{ $product->product_id }})'><i class="fa fa-plus " aria-hidden="true"></i></button>
+                                            </div>
+                                            <div class="col border">
+<<<<<<< HEAD
+                                                <span>{{ $product->quantity }}</span>
+=======
+                                                <span>{{ $product->quantity }}</span>    
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                                             </div>
                                             <div class="col">
                                                 <button class="btn btn-sm btn-danger px-2 my-0" wire:click='decrease({{ $product->product_id }})'><i class="fa fa-minus" aria-hidden="true"></i></button>
                                             </div>
+<<<<<<< HEAD
                                    </div>
+=======
+<<<<<<< HEAD
+                                   </div>
+=======
+                                   </div>      
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                                 </div>
                             </td>
                         </tr>

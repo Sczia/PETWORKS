@@ -37,6 +37,17 @@ trait TypeTrait
      * @param mixed $value The value to check.
      */
     protected function checkType(string $type, mixed $value): bool
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    protected function checkType(string $type, mixed $value): bool
+=======
+    // phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+    protected function checkType(string $type, $value): bool
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         return match ($type) {
             'array' => is_array($value),

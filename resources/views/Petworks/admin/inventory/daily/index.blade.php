@@ -20,7 +20,15 @@
                             </a>
                         </div>
                     </div>
+
+                    <div class="d-flex justify-content-end mt-3">
+                        <a class="btn btn-primary mb-0"  href="{{ route('admin.daily.download') }}" target="__blank">
+                            <span class="d-flex align-items-center"><i class="fa-solid fa-print"></i>&#160; Print</span>
+                        </a>
+                    </div>
                 </div>
+
+
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">

@@ -47,16 +47,24 @@ class Gallery extends Component
                 ModelsPhotos::create([
                     'album_id' => $gallery_id,
                     'photo' => Str::lower($this->title . '-' . $key),
+<<<<<<< HEAD
                     'path' => $path.'/'. $filename,
+=======
+<<<<<<< HEAD
+                    'path' => $path.'/'. $filename,
+=======
+                    'path' => $folder .$title.'/'. $filename,
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
                 ]);
                 // Save the photo to the given path
                 $photo->storeAs($path, $filename);
             }
-            toast()->success('SYSTEM MESSAGE', ' Added successfully.')->autoClose(5000)->width('500px')->animation('animate__fadeInRight', 'animate__fadeOutDown')->timerProgressBar();
+            toast()->success('Success', ' Added successfully.')->autoClose(5000)->width('500px')->animation('animate__fadeInRight', 'animate__fadeOutDown')->timerProgressBar();
             return redirect(request()->header('Referer'));
             $this->reset();
         } catch (\Throwable $th) {
-            toast()->error('SYSTEM MESSAGE', $th->getMessage())->autoClose(5000)->width('500px')->animation('animate__fadeInRight', 'animate__fadeOutDown')->timerProgressBar();
+            toast()->error('Information', $th->getMessage())->autoClose(5000)->width('500px')->animation('animate__fadeInRight', 'animate__fadeOutDown')->timerProgressBar();
             return redirect(request()->header('Referer'));
         }
     }

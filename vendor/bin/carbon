@@ -12,8 +12,16 @@
 
 namespace Composer;
 
+<<<<<<< HEAD
 $GLOBALS['_composer_bin_dir'] = __DIR__;
 $GLOBALS['_composer_autoload_path'] = __DIR__ . '/..'.'/autoload.php';
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+$binPath = __DIR__ . "/" . '../nesbot/carbon/bin/carbon';
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
 
 if (PHP_VERSION_ID < 80000) {
     if (!class_exists('Composer\BinProxyWrapper')) {
@@ -117,4 +125,14 @@ if (PHP_VERSION_ID < 80000) {
     }
 }
 
+<<<<<<< HEAD
 include __DIR__ . '/..'.'/nesbot/carbon/bin/carbon';
+=======
+include $binPath;
+<<<<<<< HEAD
+=======
+=======
+"${dir}/carbon" "$@"
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41

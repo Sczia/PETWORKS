@@ -133,6 +133,19 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
     ];
 
     public function extract(string|iterable $resource, MessageCatalogue $catalog)
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    public function extract(string|iterable $resource, MessageCatalogue $catalog)
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function extract($resource, MessageCatalogue $catalog)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         $files = $this->extractFiles($resource);
         foreach ($files as $file) {
@@ -313,6 +326,19 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
     }
 
     protected function extractFromDirectory(string|array $directory): iterable
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+    protected function extractFromDirectory(string|array $directory): iterable
+=======
+    /**
+     * {@inheritdoc}
+     */
+    protected function extractFromDirectory($directory)
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     {
         if (!class_exists(Finder::class)) {
             throw new \LogicException(sprintf('You cannot use "%s" as the "symfony/finder" package is not installed. Try running "composer require symfony/finder".', static::class));

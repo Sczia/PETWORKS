@@ -41,6 +41,22 @@ namespace Ramsey\Collection;
 class Set extends AbstractSet
 {
     /**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+     * The type of elements stored in this set
+     *
+     * A set's type is immutable. For this reason, this property is private.
+     */
+    private string $setType;
+
+    /**
+>>>>>>> 09f7352615a49bcbd90ba54bdbb06a7258875f45
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
      * Constructs a set object of the specified type, optionally with the
      * specified data.
      *

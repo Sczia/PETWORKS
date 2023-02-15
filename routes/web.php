@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BackupController;
 use App\Http\Controllers\CancelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConfirmController;
@@ -52,7 +53,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/settings', [LoginController::class, 'changepassform'])->name('changepass.form');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('user.login');
     Route::put('/updatepass/{id}', [LoginController::class, 'updatepass'])->name('changepass.update');
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+    
+>>>>>>> 9c86e61f634a9df0335d01cacf2ce0597478a84a
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     Route::middleware(['isActive'])->group(function () {
         Route::post('/logout', [LoginController::class, 'logout'])->name('user.logout');
         /* ADMIN */
@@ -90,7 +99,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('owner')->name('owner.')->controller(OwnerController::class)->group(function () {
             Route::get('/',  'index')->name('index');
             Route::get('/{id}',  'show')->name('show');
-            Route::put('/comment/{id}',  'update')->name('update');
+            Route::put('/update/{id}',  'update')->name('update');
         });
         /* CONTACTS */
         Route::prefix('contact')->name('contact.')->controller(ContactController::class)->group(function () {
@@ -110,6 +119,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         /* RECORDS */
         Route::prefix('records')->name('records.')->controller(RecordController::class)->group(function () {
             Route::get('/', [RecordController::class, 'index'])->name('index');
+            Route::put('/update{id}',  'update')->name('update');
         });
 
         Route::prefix('contact')->name('contact.')->controller(ContactController::class)->group(function () {
@@ -145,8 +155,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/store',  'store')->name('store');
             Route::put('/update{id}',  'update')->name('update');
             Route::get('/pdf',  'download')->name('download');
+<<<<<<< HEAD
             Route::get('/export',  'export')->name('export');
            
+=======
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
         });
 
         /* ALBUM */
@@ -164,12 +177,25 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::delete('/delete/{id}', 'destroy')->name('destroy');
         });
 
+<<<<<<< HEAD
+=======
+        /* Backup*/
+        Route::prefix('backup')->name('backup.')->controller(BackupController::class)->group(function () {
+            Route::get('/',  'index')->name('index');
+            Route::post('/store',  'store')->name('store');
+            Route::put('/update{id}',  'update')->name('update');
+        });
+
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
         /* reminder */
         Route::prefix('reminder')->name('reminder.')->controller(ReminderController::class)->group(function () {
             Route::get('/',  'index')->name('index');
         });
+<<<<<<< HEAD
 
         /* EXCEL */
         Route::get('users/export/', [UsersController::class, 'export']);
+=======
+>>>>>>> 0f040bdc1886cac621b42cde3077632f83f9ad41
     });
 });
